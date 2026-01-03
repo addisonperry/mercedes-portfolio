@@ -1,5 +1,5 @@
 :root {
-  --bg: #faf9f6;          /* soft white / cream */
+  --bg: #faf9f6;
   --red: #b51d1d;
   --text: #111;
 }
@@ -64,7 +64,6 @@ a {
 }
 
 /* ABOUT trigger */
-
 .about-trigger {
   position: absolute;
   left: 48px;
@@ -89,12 +88,17 @@ a {
 }
 
 /* =================================
-   IMAGE TILES (SUBTLE SCALE ON HOVER)
+   IMAGE TILES (SCALE WITHOUT CLIPPING)
 ================================== */
 
 .tile-wrap {
   position: absolute;
-  overflow: hidden;
+
+  /* key change: allow the scaled image to extend beyond the wrapper */
+  overflow: visible;
+
+  /* baseline stacking */
+  z-index: 1;
 }
 
 .tile-wrap img {
@@ -104,12 +108,18 @@ a {
 
   transform-origin: center;
   transition: transform 220ms ease;
+  will-change: transform;
 }
 
 /* Only scale on devices that actually hover */
 @media (hover: hover) and (pointer: fine) {
+  .tile-wrap:hover {
+    /* lift hovered tile above the others */
+    z-index: 10;
+  }
+
   .tile-wrap:hover img {
-    transform: scale(1.035);
+    transform: scale(1.05);
   }
 }
 
