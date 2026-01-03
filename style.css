@@ -21,7 +21,10 @@ body {
     Roboto, Arial, sans-serif;
 }
 
-/* Top spaced red text */
+/* ---------------------------------
+   LOGO / NAME
+---------------------------------- */
+
 .top-text {
   padding: 36px 48px 0 48px;
 }
@@ -29,44 +32,39 @@ body {
 .top-text p {
   margin: 0;
   color: var(--red);
-  font-size: 13px;
-  line-height: 1.2;
-  letter-spacing: 0.12em;
-  word-spacing: 0.35em;
-  max-width: 1200px;
+
+  /* Logo-like typography */
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
 }
 
-/* Canvas */
+/* ---------------------------------
+   CANVAS
+---------------------------------- */
+
 .canvas {
   position: relative;
   min-height: 88vh;
-  padding: 24px 48px 72px 48px;
-}
-
-.site-title {
-  position: absolute;
-  left: 48px;
-  top: 20px;
-  margin: 0;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: rgba(0, 0, 0, 0.55);
+  padding: 32px 48px 72px 48px;
 }
 
 /* ABOUT trigger */
 .about-trigger {
   position: absolute;
   left: 48px;
-  top: 48px;
+  top: 32px;
   border: 0;
   padding: 0;
   background: transparent;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.55);
+
   font-size: 13px;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
 }
 
 .about-trigger:hover {
@@ -77,7 +75,10 @@ body {
   outline: none;
 }
 
-/* Image tiles */
+/* ---------------------------------
+   IMAGE TILES
+---------------------------------- */
+
 .tile {
   position: absolute;
   width: clamp(120px, 18vw, 220px);
@@ -94,11 +95,10 @@ body {
 .tile-d { right: 10%; top: 60%; }
 .tile-e { left: 6%; top: 72%; width: clamp(180px, 26vw, 360px); }
 
-/* -----------------------------
-   ABOUT overlay (no box)
--------------------------------- */
+/* ---------------------------------
+   ABOUT OVERLAY (TEXT ONLY)
+---------------------------------- */
 
-/* Hide close button */
 .modal-close {
   display: none !important;
 }
@@ -118,14 +118,13 @@ body {
   pointer-events: auto;
 }
 
-/* No background dimming */
 .modal-backdrop {
   position: absolute;
   inset: 0;
   background: transparent;
 }
 
-/* Centered text only — no border, no shadow */
+/* No box, no border, no shadow */
 .modal-panel {
   position: relative;
   z-index: 1;
@@ -136,43 +135,27 @@ body {
   padding: 0;
   text-align: center;
 
-  transform: translateY(6px);
   animation: panelIn 180ms ease-out both;
 }
 
 @keyframes panelIn {
   from {
-    transform: translateY(14px);
     opacity: 0;
+    transform: translateY(14px);
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Header */
-.modal-header {
-  margin-bottom: 12px;
-}
-
-.modal-header h2 {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.7);
-}
-
-/* Bio text */
 .modal-body {
   max-width: 46ch;
   margin: 0 auto;
 }
 
 .modal-body p {
-  margin: 0 0 12px 0;
+  margin: 0 0 14px 0;
   font-size: 14px;
   line-height: 1.7;
   color: rgba(0, 0, 0, 0.62);
@@ -188,7 +171,10 @@ body:has(.modal.is-open) .tile {
   pointer-events: none;
 }
 
-/* Mobile */
+/* ---------------------------------
+   MOBILE
+---------------------------------- */
+
 @media (max-width: 700px) {
   .top-text,
   .canvas {
@@ -196,9 +182,14 @@ body:has(.modal.is-open) .tile {
     padding-right: 18px;
   }
 
-  .site-title,
+  .top-text p {
+    font-size: 40px;
+    letter-spacing: 0.06em;
+  }
+
   .about-trigger {
     left: 18px;
+    top: 28px;
   }
 
   .modal-panel {
@@ -214,7 +205,6 @@ body:has(.modal.is-open) .tile {
 @media (prefers-reduced-motion: reduce) {
   .modal-panel {
     animation: none;
-    transform: none;
   }
 
   .tile {
