@@ -1,0 +1,117 @@
+:root {
+  --bg: #efe9db;     /* warm off-white like your reference */
+  --red: #b51d1d;
+  --text: #111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Arial, sans-serif;
+}
+
+/* Top spaced red text */
+.top-text {
+  padding: 36px 48px 0 48px;
+}
+
+.top-text p {
+  margin: 0;
+  color: var(--red);
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  word-spacing: 0.35em;
+  text-transform: none;
+  max-width: 1200px;
+}
+
+/* Big empty canvas where images float */
+.canvas {
+  position: relative;
+  min-height: 88vh;
+  padding: 24px 48px 72px 48px;
+}
+
+/* Title is subtle (you can remove if you want it invisible) */
+.site-title {
+  position: absolute;
+  left: 48px;
+  top: 20px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+/* Image tiles */
+.tile {
+  position: absolute;
+  width: clamp(120px, 18vw, 220px);
+  height: auto;
+  display: block;
+  object-fit: cover;
+  /* keeps the slightly “printed” look */
+  filter: saturate(0.95) contrast(0.95);
+}
+
+/* Positions based on the screenshot’s composition */
+.tile-a { left: 8%;  top: 18%; }   /* upper-left portrait */
+.tile-b { right: 6%; top: 12%; width: clamp(120px, 16vw, 200px); } /* upper-right */
+.tile-c { left: 38%; top: 34%; width: clamp(160px, 26vw, 340px); } /* center wide */
+.tile-d { right: 10%; top: 60%; }  /* mid-lower right */
+.tile-e { left: 6%;  top: 72%; width: clamp(180px, 26vw, 360px); } /* bottom-left wide */
+
+/* Footer */
+.footer {
+  padding: 24px 48px 36px 48px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 18px;
+}
+
+.footer-nav a {
+  color: rgba(0, 0, 0, 0.55);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.footer-nav a:hover {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* Mobile tweaks: reduce padding and prevent off-screen overlaps */
+@media (max-width: 700px) {
+  .top-text,
+  .canvas,
+  .footer {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .site-title {
+    left: 18px;
+  }
+
+  /* pull tiles inward a bit on small screens */
+  .tile-a { left: 6%; top: 20%; }
+  .tile-b { right: 6%; top: 16%; }
+  .tile-c { left: 18%; top: 38%; }
+  .tile-d { right: 8%; top: 64%; }
+  .tile-e { left: 6%; top: 76%; }
+}
