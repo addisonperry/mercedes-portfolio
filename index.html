@@ -9,16 +9,23 @@
   </head>
 
   <body>
-    <!-- Top text line (spaced, red) -->
+    <!-- Top spaced red text -->
     <header class="top-text" aria-label="Intro text">
       <p>
-        Mercedes Ramirez
+        What idea it had been that had sent me so audaciously trespassing I could
+        not now remember. The spirit of peace descended like a cloud from heaven,
+        for the spirit of peace dwells anywhere; it is in the courts and
+        quadrangles of Oxbridge on a fine October morning.
       </p>
     </header>
 
-    <!-- Layout canvas -->
     <main class="canvas" aria-label="Homepage collage layout">
       <h1 class="site-title">Mercedes Ramirez</h1>
+
+      <!-- About trigger -->
+      <button class="about-trigger" type="button" aria-haspopup="dialog">
+        ABOUT
+      </button>
 
       <!-- Replace these src paths with your real images -->
       <img class="tile tile-a" src="images/img-a.jpg" alt="" />
@@ -28,12 +35,68 @@
       <img class="tile tile-e" src="images/img-e.jpg" alt="" />
     </main>
 
-    <footer class="footer">
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="#">Work</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-      </nav>
-    </footer>
+    <!-- Modal -->
+    <div class="modal" id="aboutModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close></div>
+
+      <div
+        class="modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="aboutTitle"
+      >
+        <div class="modal-header">
+          <h2 id="aboutTitle">About</h2>
+          <button class="modal-close" type="button" aria-label="Close" data-close>
+            ×
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <p>
+            Mercedes Ramirez is a designer focused on quiet compositions, material
+            sensitivity, and image-making. This portfolio collects selected work
+            across architecture, objects, and visual studies.
+          </p>
+
+          <p>
+            Based in Los Angeles. Available for collaborations and commissions.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const openBtn = document.querySelector(".about-trigger");
+      const modal = document.getElementById("aboutModal");
+      const dialog = modal.querySelector(".modal-panel");
+      const closeTargets = modal.querySelectorAll("[data-close]");
+
+      function openModal() {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        // focus the panel for accessibility
+        dialog.setAttribute("tabindex", "-1");
+        dialog.focus();
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        openBtn.focus();
+      }
+
+      openBtn.addEventListener("click", openModal);
+
+      closeTargets.forEach((el) => el.addEventListener("click", closeModal));
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModal();
+        }
+      });
+    </script>
   </body>
 </html>
