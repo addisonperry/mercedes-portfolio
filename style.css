@@ -72,13 +72,13 @@ a {
 .about-trigger {
   position: absolute;
   right: 48px;
-  top: 44px; /* optically aligned with logo */
+  top: 28px; /* moved up into logo band */
 
   background: none;
   border: 0;
   padding: 0;
 
-  font-size: 15px; /* slightly larger */
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
