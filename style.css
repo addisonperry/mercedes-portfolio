@@ -1,5 +1,5 @@
 :root {
-  --bg: #faf9f6;
+  --bg: #faf9f6;          /* soft white / cream */
   --red: #b51d1d;
   --text: #111;
 }
@@ -13,9 +13,9 @@ body {
   height: 100%;
 }
 
-/* ---------------------------------
+/* =================================
    CUSTOM CURSOR (LARGE RED CIRCLE)
----------------------------------- */
+================================== */
 
 body {
   margin: 0;
@@ -35,9 +35,9 @@ a {
   cursor: inherit;
 }
 
-/* ---------------------------------
+/* =================================
    LOGO / NAME
----------------------------------- */
+================================== */
 
 .top-text {
   padding: 36px 48px 0;
@@ -53,9 +53,9 @@ a {
   text-transform: lowercase;
 }
 
-/* ---------------------------------
+/* =================================
    CANVAS
----------------------------------- */
+================================== */
 
 .canvas {
   position: relative;
@@ -64,6 +64,7 @@ a {
 }
 
 /* ABOUT trigger */
+
 .about-trigger {
   position: absolute;
   left: 48px;
@@ -87,18 +88,29 @@ a {
   outline: none;
 }
 
-/* ---------------------------------
-   IMAGE TILES (CLEAN / NO HOVER EFFECT)
----------------------------------- */
+/* =================================
+   IMAGE TILES (SUBTLE SCALE ON HOVER)
+================================== */
 
 .tile-wrap {
   position: absolute;
+  overflow: hidden;
 }
 
 .tile-wrap img {
   display: block;
   width: 100%;
   height: auto;
+
+  transform-origin: center;
+  transition: transform 220ms ease;
+}
+
+/* Only scale on devices that actually hover */
+@media (hover: hover) and (pointer: fine) {
+  .tile-wrap:hover img {
+    transform: scale(1.035);
+  }
 }
 
 /* positioning + sizing */
@@ -114,9 +126,9 @@ body:has(.modal.is-open) .tile-wrap {
   pointer-events: none;
 }
 
-/* ---------------------------------
+/* =================================
    ABOUT OVERLAY
----------------------------------- */
+================================== */
 
 .modal-close {
   display: none !important;
@@ -143,19 +155,28 @@ body:has(.modal.is-open) .tile-wrap {
   max-width: 560px;
 }
 
+.modal-body {
+  padding: 0 48px;
+}
+
 .modal-body p {
+  margin: 0 0 18px 0;
   font-size: 15px;
   line-height: 1.75;
   color: rgba(0, 0, 0, 0.62);
-  margin-bottom: 18px;
 }
 
-/* ---------------------------------
+.modal-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* =================================
    MOBILE
----------------------------------- */
+================================== */
 
 @media (max-width: 700px) {
-  .top-text {
+  .top-text,
+  .canvas {
     padding-left: 18px;
     padding-right: 18px;
   }
@@ -165,11 +186,6 @@ body:has(.modal.is-open) .tile-wrap {
     letter-spacing: 0.06em;
   }
 
-  .canvas {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
   .about-trigger {
     left: 18px;
     top: 28px;
@@ -177,5 +193,19 @@ body:has(.modal.is-open) .tile-wrap {
 
   .modal.is-open {
     padding-top: 120px;
+  }
+
+  .modal-body {
+    padding: 0 18px;
+  }
+}
+
+/* =================================
+   REDUCED MOTION
+================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .tile-wrap img {
+    transition: none;
   }
 }
