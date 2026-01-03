@@ -45,6 +45,7 @@ a {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  gap: 24px;
 }
 
 .top-text p {
@@ -55,6 +56,7 @@ a {
   font-weight: 400;
   font-style: normal;
   font-size: 70px;
+  letter-spacing: 0em;
   line-height: 1;
 }
 
@@ -90,7 +92,7 @@ a {
 }
 
 /* =================================
-   IMAGE TILES
+   IMAGE TILES (SCALE, NO CLIPPING)
 ================================== */
 
 .tile-wrap {
@@ -106,6 +108,7 @@ a {
 
   transform-origin: center;
   transition: transform 220ms ease;
+  will-change: transform;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -132,19 +135,18 @@ body:has(.modal.is-open) .tile-wrap {
 }
 
 /* =================================
-   ABOUT OVERLAY
+   ABOUT OVERLAY (DOCKED “SENTENCE” AREA)
 ================================== */
 
 .modal {
   position: fixed;
   inset: 0;
   display: none;
+  z-index: 100;
 }
 
 .modal.is-open {
-  display: flex;
-  justify-content: center;
-  padding-top: 150px;
+  display: block;
 }
 
 .modal-backdrop {
@@ -152,19 +154,41 @@ body:has(.modal.is-open) .tile-wrap {
   inset: 0;
 }
 
+/*
+  This panel is positioned into the same top band as the logo,
+  then pushed right so it reads like it continues the “sentence.”
+  Adjust --about-offset once to taste.
+*/
+
 .modal-panel {
-  max-width: 560px;
+  position: absolute;
+  left: 48px;
+  right: 48px;
+  top: 36px;
+
+  margin-left: 720px; /* TUNE THIS: increase to push right, decrease to pull left */
+  max-width: 640px;
 }
 
 .modal-body {
-  padding: 0 48px;
+  padding: 0;
 }
 
 .modal-body p {
-  margin: 0 0 18px 0;
+  margin: 0 0 14px 0;
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.7;
+  font-weight: 400;
   color: rgba(0, 0, 0, 0.62);
+}
+
+.modal-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* We’re not using the “X” close UI */
+.modal-close {
+  display: none;
 }
 
 /* =================================
@@ -180,18 +204,26 @@ body:has(.modal.is-open) .tile-wrap {
 
   .top-text p {
     font-size: 40px;
+    letter-spacing: 0.06em;
   }
 
   .about-trigger {
     font-size: 14px;
   }
 
-  .modal.is-open {
-    padding-top: 120px;
+  /* On mobile, drop the about text below the header */
+  .modal-panel {
+    left: 18px;
+    right: 18px;
+    top: 96px;
+
+    margin-left: 0;
+    max-width: none;
   }
 
-  .modal-body {
-    padding: 0 18px;
+  .modal-body p {
+    font-size: 15px;
+    line-height: 1.75;
   }
 }
 
