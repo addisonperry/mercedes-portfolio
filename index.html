@@ -5,22 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Mercedes Ramirez</title>
 
+    <!-- Adobe Fonts: Neue Haas Grotesk -->
+    <link rel="stylesheet" href="https://use.typekit.net/wmc5lbu.css" />
+
+    <!-- Site styles -->
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <!-- Top red name -->
-    <header class="top-text" aria-label="Intro text">
+    <!-- Top red logo name -->
+    <header class="top-text">
       <p>mercedes ramirez</p>
     </header>
 
-    <main class="canvas" aria-label="Homepage collage layout">
+    <main class="canvas">
       <!-- About trigger -->
       <button class="about-trigger" type="button" aria-haspopup="dialog">
         ABOUT
       </button>
 
-      <!-- Images -->
+      <!-- Image collage -->
       <div class="tile-wrap tile-a">
         <img src="images/Image2.png" alt="" />
       </div>
@@ -69,13 +73,13 @@
 
           <p>
             Outside of practice, Mercedes finds balance in time with family,
-            baking, and long walks with her dogs—rituals that shape her
-            sensitivity to the emotional weight of space. She is committed to
-            people-centered architecture that is community-driven, culturally
-            aware, and socially responsive, approaching design through empathy,
-            collaboration, and careful listening. Her goal is to contribute to
-            work that meets practical needs while fostering identity, belonging,
-            and lasting connection to place.
+            baking, and long walks with her dogs—rituals that shape her sensitivity
+            to the emotional weight of space. She is committed to people-centered
+            architecture that is community-driven, culturally aware, and socially
+            responsive, approaching design through empathy, collaboration, and
+            careful listening. Her goal is to contribute to work that meets
+            practical needs while fostering identity, belonging, and lasting
+            connection to place.
           </p>
         </div>
 
@@ -90,12 +94,14 @@
 
       openBtn.addEventListener("click", () => {
         modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
       });
 
       closeTargets.forEach((el) =>
         el.addEventListener("click", () => {
           modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
           document.body.style.overflow = "";
         })
       );
@@ -103,6 +109,7 @@
       window.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
           modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
           document.body.style.overflow = "";
         }
       });
