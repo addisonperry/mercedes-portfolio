@@ -31,7 +31,6 @@ body {
 </svg>") 20 20, auto;
 }
 
-/* Keep cursor consistent on interactive elements */
 button {
   cursor: url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'>\
@@ -51,7 +50,6 @@ button {
   margin: 0;
   color: var(--red);
 
-  /* Logo-like typography */
   font-size: 56px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -104,8 +102,27 @@ button {
   height: auto;
   display: block;
   object-fit: cover;
+
   filter: saturate(0.95) contrast(0.95);
   transition: opacity 140ms ease;
+
+  /* needed for overlay */
+  overflow: hidden;
+}
+
+/* soft red tint overlay */
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(181, 29, 29, 0.12);
+  opacity: 0;
+  transition: opacity 160ms ease;
+  pointer-events: none;
+}
+
+.tile:hover::after {
+  opacity: 1;
 }
 
 .tile-a { left: 8%; top: 18%; }
@@ -135,7 +152,6 @@ button {
   justify-content: center;
   pointer-events: auto;
 
-  /* Space below logo */
   padding-top: 150px;
 }
 
@@ -145,7 +161,6 @@ button {
   background: transparent;
 }
 
-/* wrapper */
 .modal-panel {
   position: relative;
   z-index: 1;
@@ -166,7 +181,6 @@ button {
   }
 }
 
-/* centered column, LEFT-aligned text */
 .modal-body {
   max-width: 560px;
   margin: 0 auto;
@@ -228,6 +242,10 @@ body:has(.modal.is-open) .tile {
   }
 
   .tile {
+    transition: none;
+  }
+
+  .tile::after {
     transition: none;
   }
 }
