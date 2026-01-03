@@ -65,12 +65,15 @@ a {
   padding: 32px 48px 72px;
 }
 
-/* ABOUT trigger */
+/* =================================
+   ABOUT TRIGGER
+================================== */
 
 .about-trigger {
   position: absolute;
-  left: 48px;
+  right: 48px;
   top: 32px;
+
   background: none;
   border: 0;
   padding: 0;
@@ -79,11 +82,12 @@ a {
   font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.55);
+
+  color: var(--red);
 }
 
 .about-trigger:hover {
-  color: rgba(0, 0, 0, 0.85);
+  color: rgba(181, 29, 29, 0.75);
 }
 
 .about-trigger:focus {
@@ -195,7 +199,7 @@ body:has(.modal.is-open) .tile-wrap {
   }
 
   .about-trigger {
-    left: 18px;
+    right: 18px;
     top: 28px;
   }
 
