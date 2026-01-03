@@ -26,16 +26,17 @@ body {
     Roboto, Arial, sans-serif;
 
   cursor: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'>\
-<circle cx='20' cy='20' r='9' fill='%23b51d1d'/>\
-</svg>") 20 20, auto;
+<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'>\
+<circle cx='22' cy='22' r='11' fill='%23b51d1d'/>\
+</svg>") 22 22, auto;
 }
 
-button {
+button,
+a {
   cursor: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'>\
-<circle cx='20' cy='20' r='9' fill='%23b51d1d'/>\
-</svg>") 20 20, pointer;
+<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'>\
+<circle cx='22' cy='22' r='11' fill='%23b51d1d'/>\
+</svg>") 22 22, pointer;
 }
 
 /* ---------------------------------
@@ -93,7 +94,9 @@ button {
 }
 
 /* ---------------------------------
-   IMAGE TILES
+   IMAGE TILES (BEST OPTION)
+   Use a filter-based hover tint.
+   Works reliably on <img> elements across browsers.
 ---------------------------------- */
 
 .tile {
@@ -103,26 +106,20 @@ button {
   display: block;
   object-fit: cover;
 
+  /* base look */
   filter: saturate(0.95) contrast(0.95);
-  transition: opacity 140ms ease;
 
-  /* needed for overlay */
-  overflow: hidden;
+  /* smooth */
+  transition: opacity 140ms ease, filter 180ms ease;
 }
 
-/* soft red tint overlay */
-.tile::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(181, 29, 29, 0.12);
-  opacity: 0;
-  transition: opacity 160ms ease;
-  pointer-events: none;
-}
-
-.tile:hover::after {
-  opacity: 1;
+/* Only apply hover on devices that actually hover */
+@media (hover: hover) and (pointer: fine) {
+  .tile:hover {
+    /* subtle red warmth */
+    filter: saturate(0.95) contrast(0.95) sepia(0.32) hue-rotate(330deg)
+      saturate(1.7);
+  }
 }
 
 .tile-a { left: 8%; top: 18%; }
@@ -242,10 +239,6 @@ body:has(.modal.is-open) .tile {
   }
 
   .tile {
-    transition: none;
-  }
-
-  .tile::after {
     transition: none;
   }
 }
