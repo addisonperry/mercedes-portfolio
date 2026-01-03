@@ -69,13 +69,13 @@ body {
   text-transform: uppercase;
 }
 
-.about-trigger:hover {
-  color: rgba(0, 0, 0, 0.85);
+/* No border/outline box on click */
+.about-trigger:focus {
+  outline: none;
 }
 
-.about-trigger:focus {
-  outline: 2px solid rgba(0, 0, 0, 0.25);
-  outline-offset: 4px;
+.about-trigger:hover {
+  color: rgba(0, 0, 0, 0.85);
 }
 
 /* Image tiles */
@@ -86,6 +86,7 @@ body {
   display: block;
   object-fit: cover;
   filter: saturate(0.95) contrast(0.95);
+  transition: opacity 140ms ease;
 }
 
 .tile-a {
@@ -112,15 +113,12 @@ body {
   width: clamp(180px, 26vw, 360px);
 }
 
-/* -----------------------------
-   MODAL (Centered + refinements)
-   Refinements included:
-   1) Click-outside only close (no "×" styling here; hide it)
-   2) Subtle fade/scale animation
-   3) Tighter editorial bio styling
--------------------------------- */
+/* -----------------------------------------
+   MODAL (Centered, no backdrop dimming)
+   + Hide images when About is open
+------------------------------------------ */
 
-/* Hide the "×" button (keeps HTML intact) */
+/* Hide the “×” close (keeps HTML intact) */
 .modal-close {
   display: none !important;
 }
@@ -130,11 +128,8 @@ body {
   inset: 0;
   z-index: 50;
 
-  /* keep it out of layout when closed */
+  /* off when closed */
   display: none;
-
-  /* animation states */
-  opacity: 0;
   pointer-events: none;
 }
 
@@ -142,19 +137,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  opacity: 1;
   pointer-events: auto;
-
-  /* soft fade in */
-  animation: modalFadeIn 160ms ease-out both;
 }
 
+/* IMPORTANT: background opacity does NOT change */
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(1px);
+  background: transparent;
+  backdrop-filter: none;
 }
 
 /* Centered panel */
@@ -165,23 +156,13 @@ body {
   width: min(520px, calc(100vw - 72px));
   background: rgba(239, 233, 219, 0.98);
   border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.14);
 
   padding: 26px 30px 24px;
   text-align: center;
 
-  /* subtle scale in */
   transform: translateY(6px) scale(0.985);
   animation: panelIn 180ms ease-out both;
-}
-
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 @keyframes panelIn {
@@ -193,7 +174,7 @@ body {
   }
 }
 
-/* Header text (editorial) */
+/* Header (editorial) */
 .modal-header {
   display: block;
   margin-bottom: 12px;
@@ -208,7 +189,7 @@ body {
   color: rgba(0, 0, 0, 0.7);
 }
 
-/* Bio styling (tighter, more editorial) */
+/* Bio styling (tight) */
 .modal-body {
   max-width: 46ch;
   margin: 0 auto;
@@ -223,6 +204,12 @@ body {
 
 .modal-body p:last-child {
   margin-bottom: 0;
+}
+
+/* Hide images when modal is open (Safari 15.4+ supports :has) */
+body:has(.modal.is-open) .tile {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Mobile */
@@ -248,13 +235,14 @@ body {
   }
 }
 
-/* Reduced motion: respect user preference */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .modal.is-open {
-    animation: none;
-  }
   .modal-panel {
     animation: none;
     transform: none;
+  }
+
+  .tile {
+    transition: none;
   }
 }
