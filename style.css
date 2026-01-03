@@ -72,13 +72,13 @@ a {
 .about-trigger {
   position: absolute;
   right: 48px;
-  top: 32px;
+  top: 44px; /* optically aligned with logo */
 
   background: none;
   border: 0;
   padding: 0;
 
-  font-size: 13px;
+  font-size: 15px; /* slightly larger */
   font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -200,7 +200,8 @@ body:has(.modal.is-open) .tile-wrap {
 
   .about-trigger {
     right: 18px;
-    top: 28px;
+    top: 36px;
+    font-size: 14px;
   }
 
   .modal.is-open {
