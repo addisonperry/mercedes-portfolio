@@ -15,7 +15,12 @@
         What idea it had been that had sent me so audaciously trespassing I could
         not now remember. The spirit of peace descended like a cloud from heaven,
         for the spirit of peace dwells anywhere; it is in the courts and
-        quadrangles of Oxbridge on a fine October morning.
+        quadrangles of Oxbridge on a fine October morning. It is in the long
+        corridors and the small thresholds, in the hush of a studio late at night,
+        in the patient act of looking, and in the work of arranging form so it can
+        hold a life. Some mornings it arrives quietly—through light on a wall,
+        through the measured distance between objects, through a room that feels
+        carefully made.
       </p>
     </header>
 
@@ -39,30 +44,33 @@
     <div class="modal" id="aboutModal" aria-hidden="true">
       <div class="modal-backdrop" data-close></div>
 
-      <div
-        class="modal-panel"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="aboutTitle"
-      >
-        <div class="modal-header">
-          <h2 id="aboutTitle">About</h2>
-          <button class="modal-close" type="button" aria-label="Close" data-close>
-            ×
-          </button>
-        </div>
-
+      <div class="modal-panel" role="dialog" aria-modal="true">
+        <!-- No "About" title, only the bio text -->
         <div class="modal-body">
           <p>
-            Mercedes Ramirez is a designer focused on quiet compositions, material
-            sensitivity, and image-making. This portfolio collects selected work
-            across architecture, objects, and visual studies.
+            Mercedes Ramirez is an architectural designer based in Los Angeles,
+            working across architecture, objects, and image-making with a focus on
+            quiet composition and material clarity. She received her Bachelor of
+            Architecture from Cal Poly Pomona, where her work emphasized careful
+            spatial sequencing, atmosphere, and the relationship between everyday
+            rituals and the built environment.
           </p>
 
           <p>
-            Based in Los Angeles. Available for collaborations and commissions.
+            Her professional experience includes work with Lanza Atelier in Mexico
+            City and HSU McCullough in Los Angeles. Across these contexts, she has
+            contributed to projects from early concept development through
+            drawing-based refinement—valuing precision, restraint, and the
+            discipline of making ideas legible through plan, section, and detail.
+            This portfolio gathers selected studies and projects that explore
+            proportion, light, and the subtle weight of objects in space.
           </p>
         </div>
+
+        <!-- Keep close button in HTML for click-outside close; CSS can hide it -->
+        <button class="modal-close" type="button" aria-label="Close" data-close>
+          ×
+        </button>
       </div>
     </div>
 
@@ -75,7 +83,6 @@
       function openModal() {
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
-        // focus the panel for accessibility
         dialog.setAttribute("tabindex", "-1");
         dialog.focus();
         document.body.style.overflow = "hidden";
@@ -89,7 +96,6 @@
       }
 
       openBtn.addEventListener("click", openModal);
-
       closeTargets.forEach((el) => el.addEventListener("click", closeModal));
 
       window.addEventListener("keydown", (e) => {
