@@ -1,5 +1,6 @@
 :root {
-  --bg: #efe9db;
+  /* Lighter, cleaner background */
+  --bg: #faf9f6;      /* soft white / cream */
   --red: #b51d1d;
   --text: #111;
 }
@@ -38,7 +39,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.08em;
   line-height: 1;
-  text-transform: lowercase; /* matches your screenshot */
+  text-transform: lowercase;
 }
 
 /* ---------------------------------
@@ -97,9 +98,10 @@ body {
 .tile-e { left: 6%; top: 72%; width: clamp(180px, 26vw, 360px); }
 
 /* ---------------------------------
-   ABOUT OVERLAY (LEFT-ALIGNED, CENTERED COLUMN)
-   - pushed down to clear logo
-   - no dimming, no border/shadow
+   ABOUT OVERLAY
+   - left-aligned text
+   - centered column
+   - pushed down from logo
 ---------------------------------- */
 
 .modal-close {
@@ -119,7 +121,7 @@ body {
   justify-content: center;
   pointer-events: auto;
 
-  /* Push text down so it doesn't collide with the logo */
+  /* Space below logo */
   padding-top: 150px;
 }
 
@@ -150,7 +152,7 @@ body {
   }
 }
 
-/* Centered column, LEFT-aligned text */
+/* centered column, LEFT-aligned text */
 .modal-body {
   max-width: 560px;
   margin: 0 auto;
