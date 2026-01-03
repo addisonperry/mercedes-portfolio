@@ -21,11 +21,25 @@
       </button>
 
       <!-- Images -->
-      <img class="tile tile-a" src="images/Image2.png" alt="" />
-      <img class="tile tile-b" src="images/Image1.png" alt="" />
-      <img class="tile tile-c" src="images/Image3.png" alt="" />
-      <img class="tile tile-d" src="images/Image4.png" alt="" />
-      <img class="tile tile-e" src="images/img-e.jpg" alt="" />
+      <div class="tile-wrap tile-a">
+        <img src="images/Image2.png" alt="" />
+      </div>
+
+      <div class="tile-wrap tile-b">
+        <img src="images/Image1.png" alt="" />
+      </div>
+
+      <div class="tile-wrap tile-c">
+        <img src="images/Image3.png" alt="" />
+      </div>
+
+      <div class="tile-wrap tile-d">
+        <img src="images/Image4.png" alt="" />
+      </div>
+
+      <div class="tile-wrap tile-e">
+        <img src="images/img-e.jpg" alt="" />
+      </div>
     </main>
 
     <!-- About overlay -->
@@ -65,40 +79,31 @@
           </p>
         </div>
 
-        <!-- kept for click-outside close -->
-        <button class="modal-close" type="button" aria-label="Close" data-close>
-          ×
-        </button>
+        <button class="modal-close" type="button" data-close>×</button>
       </div>
     </div>
 
     <script>
       const openBtn = document.querySelector(".about-trigger");
       const modal = document.getElementById("aboutModal");
-      const dialog = modal.querySelector(".modal-panel");
       const closeTargets = modal.querySelectorAll("[data-close]");
 
-      function openModal() {
+      openBtn.addEventListener("click", () => {
         modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-        dialog.setAttribute("tabindex", "-1");
-        dialog.focus();
         document.body.style.overflow = "hidden";
-      }
+      });
 
-      function closeModal() {
-        modal.classList.remove("is-open");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-        openBtn.focus();
-      }
-
-      openBtn.addEventListener("click", openModal);
-      closeTargets.forEach((el) => el.addEventListener("click", closeModal));
+      closeTargets.forEach((el) =>
+        el.addEventListener("click", () => {
+          modal.classList.remove("is-open");
+          document.body.style.overflow = "";
+        })
+      );
 
       window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("is-open")) {
-          closeModal();
+        if (e.key === "Escape") {
+          modal.classList.remove("is-open");
+          document.body.style.overflow = "";
         }
       });
     </script>
