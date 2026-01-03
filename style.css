@@ -1,5 +1,5 @@
 :root {
-  --bg: #efe9db;     /* warm off-white like your reference */
+  --bg: #efe9db;
   --red: #b51d1d;
   --text: #111;
 }
@@ -33,18 +33,16 @@ body {
   line-height: 1.2;
   letter-spacing: 0.12em;
   word-spacing: 0.35em;
-  text-transform: none;
   max-width: 1200px;
 }
 
-/* Big empty canvas where images float */
+/* Canvas */
 .canvas {
   position: relative;
   min-height: 88vh;
   padding: 24px 48px 72px 48px;
 }
 
-/* Title is subtle (you can remove if you want it invisible) */
 .site-title {
   position: absolute;
   left: 48px;
@@ -56,6 +54,29 @@ body {
   color: rgba(0, 0, 0, 0.55);
 }
 
+/* ABOUT button (looks like text) */
+.about-trigger {
+  position: absolute;
+  left: 48px;
+  top: 48px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+}
+
+.about-trigger:hover {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.about-trigger:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.25);
+  outline-offset: 4px;
+}
+
 /* Image tiles */
 .tile {
   position: absolute;
@@ -63,55 +84,96 @@ body {
   height: auto;
   display: block;
   object-fit: cover;
-  /* keeps the slightly “printed” look */
   filter: saturate(0.95) contrast(0.95);
 }
 
-/* Positions based on the screenshot’s composition */
-.tile-a { left: 8%;  top: 18%; }   /* upper-left portrait */
-.tile-b { right: 6%; top: 12%; width: clamp(120px, 16vw, 200px); } /* upper-right */
-.tile-c { left: 38%; top: 34%; width: clamp(160px, 26vw, 340px); } /* center wide */
-.tile-d { right: 10%; top: 60%; }  /* mid-lower right */
-.tile-e { left: 6%;  top: 72%; width: clamp(180px, 26vw, 360px); } /* bottom-left wide */
+.tile-a { left: 8%;  top: 18%; }
+.tile-b { right: 6%; top: 12%; width: clamp(120px, 16vw, 200px); }
+.tile-c { left: 38%; top: 34%; width: clamp(160px, 26vw, 340px); }
+.tile-d { right: 10%; top: 60%; }
+.tile-e { left: 6%;  top: 72%; width: clamp(180px, 26vw, 360px); }
 
-/* Footer */
-.footer {
-  padding: 24px 48px 36px 48px;
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 50;
 }
 
-.footer-nav {
+.modal.is-open {
+  display: block;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.modal-panel {
+  position: absolute;
+  left: 48px;
+  top: 110px;
+  width: min(520px, calc(100vw - 96px));
+  background: rgba(239, 233, 219, 0.98);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+  padding: 18px 18px 16px;
+}
+
+.modal-header {
   display: flex;
-  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
-.footer-nav a {
-  color: rgba(0, 0, 0, 0.55);
-  text-decoration: none;
+.modal-header h2 {
+  margin: 0;
   font-size: 13px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
 }
 
-.footer-nav a:hover {
+.modal-close {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.modal-close:hover {
   color: rgba(0, 0, 0, 0.85);
 }
 
-/* Mobile tweaks: reduce padding and prevent off-screen overlaps */
+.modal-body p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* Mobile */
 @media (max-width: 700px) {
   .top-text,
-  .canvas,
-  .footer {
+  .canvas {
     padding-left: 18px;
     padding-right: 18px;
   }
 
-  .site-title {
+  .site-title,
+  .about-trigger {
     left: 18px;
   }
 
-  /* pull tiles inward a bit on small screens */
-  .tile-a { left: 6%; top: 20%; }
-  .tile-b { right: 6%; top: 16%; }
-  .tile-c { left: 18%; top: 38%; }
-  .tile-d { right: 8%; top: 64%; }
-  .tile-e { left: 6%; top: 76%; }
+  .modal-panel {
+    left: 18px;
+    width: calc(100vw - 36px);
+  }
 }
