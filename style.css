@@ -14,7 +14,7 @@ body {
 }
 
 /* =================================
-   BASE / CURSOR
+   BASE
 ================================== */
 
 body {
@@ -23,40 +23,24 @@ body {
   color: var(--text);
 
   font-family: "neue-haas-grotesk-display", system-ui, sans-serif;
-
-  cursor: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'>\
-<circle cx='22' cy='22' r='11' fill='%23b51d1d'/>\
-</svg>") 22 22, auto;
-}
-
-button,
-a {
-  cursor: inherit;
 }
 
 /* =================================
-   HEADER / NAME + ABOUT
+   HEADER
 ================================== */
 
 .top-text {
   padding: 36px 48px 0;
-
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 24px;
 }
 
 .top-text p {
   margin: 0;
   color: var(--red);
-
   font-family: neue-haas-grotesk-text, sans-serif;
-  font-weight: 400;
-  font-style: normal;
   font-size: 70px;
-  letter-spacing: 0em;
   line-height: 1;
 }
 
@@ -64,21 +48,10 @@ a {
   background: none;
   border: 0;
   padding: 0;
-
   font-size: 15px;
-  font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-
   color: var(--red);
-}
-
-.about-trigger:hover {
-  color: rgba(181, 29, 29, 0.75);
-}
-
-.about-trigger:focus {
-  outline: none;
 }
 
 /* =================================
@@ -92,50 +65,7 @@ a {
 }
 
 /* =================================
-   IMAGE TILES (SCALE, NO CLIPPING)
-================================== */
-
-.tile-wrap {
-  position: absolute;
-  overflow: visible;
-  z-index: 1;
-}
-
-.tile-wrap img {
-  display: block;
-  width: 100%;
-  height: auto;
-
-  transform-origin: center;
-  transition: transform 220ms ease;
-  will-change: transform;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .tile-wrap:hover {
-    z-index: 10;
-  }
-
-  .tile-wrap:hover img {
-    transform: scale(1.05);
-  }
-}
-
-/* positioning + sizing */
-.tile-a { left: 8%; top: 18%; width: clamp(120px, 18vw, 220px); }
-.tile-b { right: 6%; top: 12%; width: clamp(120px, 16vw, 200px); }
-.tile-c { left: 38%; top: 34%; width: clamp(160px, 26vw, 340px); }
-.tile-d { right: 10%; top: 60%; width: clamp(120px, 18vw, 220px); }
-.tile-e { left: 6%; top: 72%; width: clamp(180px, 26vw, 360px); }
-
-/* Hide images when About is open */
-body:has(.modal.is-open) .tile-wrap {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* =================================
-   ABOUT OVERLAY (DOCKED “SENTENCE” AREA)
+   ABOUT OVERLAY – SENTENCE COMPOSITION
 ================================== */
 
 .modal {
@@ -154,41 +84,41 @@ body:has(.modal.is-open) .tile-wrap {
   inset: 0;
 }
 
-/*
-  This panel is positioned into the same top band as the logo,
-  then pushed right so it reads like it continues the “sentence.”
-  Adjust --about-offset once to taste.
-*/
-
 .modal-panel {
   position: absolute;
-  left: 48px;
-  right: 48px;
-  top: 36px;
-
-  margin-left: 720px; /* TUNE THIS: increase to push right, decrease to pull left */
-  max-width: 640px;
+  inset: 0;
+  pointer-events: none;
 }
 
 .modal-body {
-  padding: 0;
+  pointer-events: auto;
 }
 
-.modal-body p {
-  margin: 0 0 14px 0;
+/* FIRST LINE — continues the name */
+.about-lead {
+  position: absolute;
+  top: 36px;                  /* same band as header */
+  left: calc(48px + 720px);   /* logo width + left padding */
+  max-width: 640px;
+
+  margin: 0;
   font-size: 15px;
   line-height: 1.7;
-  font-weight: 400;
   color: rgba(0, 0, 0, 0.62);
 }
 
-.modal-body p:last-child {
-  margin-bottom: 0;
+/* REST OF TEXT — drops below, left aligned */
+.about-rest {
+  margin-top: 130px;          /* below header */
+  margin-left: 48px;
+  max-width: 680px;
 }
 
-/* We’re not using the “X” close UI */
-.modal-close {
-  display: none;
+.about-rest p {
+  margin: 0 0 16px 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.62);
 }
 
 /* =================================
@@ -196,43 +126,23 @@ body:has(.modal.is-open) .tile-wrap {
 ================================== */
 
 @media (max-width: 700px) {
-  .top-text,
-  .canvas {
+  .top-text {
     padding-left: 18px;
     padding-right: 18px;
   }
 
   .top-text p {
     font-size: 40px;
-    letter-spacing: 0.06em;
   }
 
-  .about-trigger {
-    font-size: 14px;
-  }
-
-  /* On mobile, drop the about text below the header */
-  .modal-panel {
-    left: 18px;
-    right: 18px;
-    top: 96px;
-
-    margin-left: 0;
+  .about-lead {
+    position: static;
+    margin: 96px 18px 0;
     max-width: none;
   }
 
-  .modal-body p {
-    font-size: 15px;
-    line-height: 1.75;
-  }
-}
-
-/* =================================
-   REDUCED MOTION
-================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  .tile-wrap img {
-    transition: none;
+  .about-rest {
+    margin: 18px 18px 0;
+    max-width: none;
   }
 }
