@@ -9,30 +9,18 @@
   </head>
 
   <body>
-    <!-- Top spaced red text -->
+    <!-- Top red name -->
     <header class="top-text" aria-label="Intro text">
-      <p>
-        What idea it had been that had sent me so audaciously trespassing I could
-        not now remember. The spirit of peace descended like a cloud from heaven,
-        for the spirit of peace dwells anywhere; it is in the courts and
-        quadrangles of Oxbridge on a fine October morning. It is in the long
-        corridors and the small thresholds, in the hush of a studio late at night,
-        in the patient act of looking, and in the work of arranging form so it can
-        hold a life. Some mornings it arrives quietly—through light on a wall,
-        through the measured distance between objects, through a room that feels
-        carefully made.
-      </p>
+      <p>Mercedes Ramirez</p>
     </header>
 
     <main class="canvas" aria-label="Homepage collage layout">
-      <h1 class="site-title">Mercedes Ramirez</h1>
-
       <!-- About trigger -->
       <button class="about-trigger" type="button" aria-haspopup="dialog">
         ABOUT
       </button>
 
-      <!-- Replace these src paths with your real images -->
+      <!-- Images -->
       <img class="tile tile-a" src="images/img-a.jpg" alt="" />
       <img class="tile tile-b" src="images/img-b.jpg" alt="" />
       <img class="tile tile-c" src="images/img-c.jpg" alt="" />
@@ -40,12 +28,11 @@
       <img class="tile tile-e" src="images/img-e.jpg" alt="" />
     </main>
 
-    <!-- Modal -->
+    <!-- About overlay -->
     <div class="modal" id="aboutModal" aria-hidden="true">
       <div class="modal-backdrop" data-close></div>
 
       <div class="modal-panel" role="dialog" aria-modal="true">
-        <!-- No "About" title, only the bio text -->
         <div class="modal-body">
           <p>
             Mercedes Ramirez is an architectural designer based in Los Angeles,
@@ -67,7 +54,7 @@
           </p>
         </div>
 
-        <!-- Keep close button in HTML for click-outside close; CSS can hide it -->
+        <!-- kept for click-outside close -->
         <button class="modal-close" type="button" aria-label="Close" data-close>
           ×
         </button>
