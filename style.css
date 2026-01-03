@@ -14,7 +14,7 @@ body {
 }
 
 /* =================================
-   BASE
+   BASE / CURSOR
 ================================== */
 
 body {
@@ -23,14 +23,25 @@ body {
   color: var(--text);
 
   font-family: "neue-haas-grotesk-display", system-ui, sans-serif;
+
+  cursor: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'>\
+<circle cx='22' cy='22' r='11' fill='%23b51d1d'/>\
+</svg>") 22 22, auto;
+}
+
+button,
+a {
+  cursor: inherit;
 }
 
 /* =================================
-   HEADER
+   HEADER / NAME + ABOUT
 ================================== */
 
 .top-text {
   padding: 36px 48px 0;
+
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -39,7 +50,10 @@ body {
 .top-text p {
   margin: 0;
   color: var(--red);
+
   font-family: neue-haas-grotesk-text, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 70px;
   line-height: 1;
 }
@@ -48,10 +62,21 @@ body {
   background: none;
   border: 0;
   padding: 0;
+
   font-size: 15px;
+  font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+
   color: var(--red);
+}
+
+.about-trigger:hover {
+  color: rgba(181, 29, 29, 0.75);
+}
+
+.about-trigger:focus {
+  outline: none;
 }
 
 /* =================================
@@ -65,18 +90,61 @@ body {
 }
 
 /* =================================
-   ABOUT OVERLAY – SENTENCE COMPOSITION
+   IMAGE TILES
+================================== */
+
+.tile-wrap {
+  position: absolute;
+  overflow: visible;
+  z-index: 1;
+}
+
+.tile-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  transform-origin: center;
+  transition: transform 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tile-wrap:hover {
+    z-index: 10;
+  }
+
+  .tile-wrap:hover img {
+    transform: scale(1.05);
+  }
+}
+
+/* positioning + sizing */
+.tile-a { left: 8%; top: 18%; width: clamp(120px, 18vw, 220px); }
+.tile-b { right: 6%; top: 12%; width: clamp(120px, 16vw, 200px); }
+.tile-c { left: 38%; top: 34%; width: clamp(160px, 26vw, 340px); }
+.tile-d { right: 10%; top: 60%; width: clamp(120px, 18vw, 220px); }
+.tile-e { left: 6%; top: 72%; width: clamp(180px, 26vw, 360px); }
+
+/* Hide images when About is open */
+body:has(.modal.is-open) .tile-wrap {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =================================
+   ABOUT OVERLAY
 ================================== */
 
 .modal {
   position: fixed;
   inset: 0;
   display: none;
-  z-index: 100;
 }
 
 .modal.is-open {
-  display: block;
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
 }
 
 .modal-backdrop {
@@ -85,39 +153,17 @@ body {
 }
 
 .modal-panel {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+  max-width: 560px;
 }
 
 .modal-body {
-  pointer-events: auto;
+  padding: 0 48px;
 }
 
-/* FIRST LINE — continues the name */
-.about-lead {
-  position: absolute;
-  top: 36px;                  /* same band as header */
-  left: calc(48px + 720px);   /* logo width + left padding */
-  max-width: 640px;
-
-  margin: 0;
+.modal-body p {
+  margin: 0 0 18px 0;
   font-size: 15px;
-  line-height: 1.7;
-  color: rgba(0, 0, 0, 0.62);
-}
-
-/* REST OF TEXT — drops below, left aligned */
-.about-rest {
-  margin-top: 130px;          /* below header */
-  margin-left: 48px;
-  max-width: 680px;
-}
-
-.about-rest p {
-  margin: 0 0 16px 0;
-  font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: rgba(0, 0, 0, 0.62);
 }
 
@@ -126,7 +172,8 @@ body {
 ================================== */
 
 @media (max-width: 700px) {
-  .top-text {
+  .top-text,
+  .canvas {
     padding-left: 18px;
     padding-right: 18px;
   }
@@ -135,14 +182,25 @@ body {
     font-size: 40px;
   }
 
-  .about-lead {
-    position: static;
-    margin: 96px 18px 0;
-    max-width: none;
+  .about-trigger {
+    font-size: 14px;
   }
 
-  .about-rest {
-    margin: 18px 18px 0;
-    max-width: none;
+  .modal.is-open {
+    padding-top: 120px;
+  }
+
+  .modal-body {
+    padding: 0 18px;
+  }
+}
+
+/* =================================
+   REDUCED MOTION
+================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .tile-wrap img {
+    transition: none;
   }
 }
