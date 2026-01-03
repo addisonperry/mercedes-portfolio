@@ -72,7 +72,7 @@ a {
 .about-trigger {
   position: absolute;
   right: 48px;
-  top: 28px; /* moved up into logo band */
+  top: 2px; /* moved up into logo band */
 
   background: none;
   border: 0;
