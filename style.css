@@ -14,15 +14,15 @@ body {
 }
 
 /* =================================
-   CUSTOM CURSOR (LARGE RED CIRCLE)
+   BASE / CURSOR
 ================================== */
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Arial, sans-serif;
+
+  font-family: "neue-haas-grotesk-display", system-ui, sans-serif;
 
   cursor: url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'>\
@@ -64,6 +64,7 @@ a {
 }
 
 /* ABOUT trigger */
+
 .about-trigger {
   position: absolute;
   left: 48px;
@@ -73,7 +74,7 @@ a {
   padding: 0;
 
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.55);
@@ -88,16 +89,12 @@ a {
 }
 
 /* =================================
-   IMAGE TILES (SCALE WITHOUT CLIPPING)
+   IMAGE TILES (SCALE, NO CLIPPING)
 ================================== */
 
 .tile-wrap {
   position: absolute;
-
-  /* key change: allow the scaled image to extend beyond the wrapper */
   overflow: visible;
-
-  /* baseline stacking */
   z-index: 1;
 }
 
@@ -111,10 +108,8 @@ a {
   will-change: transform;
 }
 
-/* Only scale on devices that actually hover */
 @media (hover: hover) and (pointer: fine) {
   .tile-wrap:hover {
-    /* lift hovered tile above the others */
     z-index: 10;
   }
 
@@ -139,10 +134,6 @@ body:has(.modal.is-open) .tile-wrap {
 /* =================================
    ABOUT OVERLAY
 ================================== */
-
-.modal-close {
-  display: none !important;
-}
 
 .modal {
   position: fixed;
@@ -173,11 +164,16 @@ body:has(.modal.is-open) .tile-wrap {
   margin: 0 0 18px 0;
   font-size: 15px;
   line-height: 1.75;
+  font-weight: 400;
   color: rgba(0, 0, 0, 0.62);
 }
 
 .modal-body p:last-child {
   margin-bottom: 0;
+}
+
+.modal-close {
+  display: none;
 }
 
 /* =================================
