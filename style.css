@@ -36,11 +36,15 @@ a {
 }
 
 /* =================================
-   LOGO / NAME
+   HEADER / NAME + ABOUT
 ================================== */
 
 .top-text {
   padding: 36px 48px 0;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 .top-text p {
@@ -51,29 +55,10 @@ a {
   font-weight: 400;
   font-style: normal;
   font-size: 70px;
-  letter-spacing: 0em;
   line-height: 1;
 }
 
-/* =================================
-   CANVAS
-================================== */
-
-.canvas {
-  position: relative;
-  min-height: 88vh;
-  padding: 32px 48px 72px;
-}
-
-/* =================================
-   ABOUT TRIGGER
-================================== */
-
 .about-trigger {
-  position: absolute;
-  right: 48px;
-  top: 2px; /* moved up into logo band */
-
   background: none;
   border: 0;
   padding: 0;
@@ -95,7 +80,17 @@ a {
 }
 
 /* =================================
-   IMAGE TILES (SCALE, NO CLIPPING)
+   CANVAS
+================================== */
+
+.canvas {
+  position: relative;
+  min-height: 88vh;
+  padding: 32px 48px 72px;
+}
+
+/* =================================
+   IMAGE TILES
 ================================== */
 
 .tile-wrap {
@@ -111,7 +106,6 @@ a {
 
   transform-origin: center;
   transition: transform 220ms ease;
-  will-change: transform;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -170,16 +164,7 @@ body:has(.modal.is-open) .tile-wrap {
   margin: 0 0 18px 0;
   font-size: 15px;
   line-height: 1.75;
-  font-weight: 400;
   color: rgba(0, 0, 0, 0.62);
-}
-
-.modal-body p:last-child {
-  margin-bottom: 0;
-}
-
-.modal-close {
-  display: none;
 }
 
 /* =================================
@@ -195,12 +180,9 @@ body:has(.modal.is-open) .tile-wrap {
 
   .top-text p {
     font-size: 40px;
-    letter-spacing: 0.06em;
   }
 
   .about-trigger {
-    right: 18px;
-    top: 36px;
     font-size: 14px;
   }
 
