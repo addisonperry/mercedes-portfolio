@@ -66,6 +66,7 @@ body {
   color: rgba(0, 0, 0, 0.55);
   font-size: 13px;
   letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .about-trigger:hover {
@@ -87,76 +88,141 @@ body {
   filter: saturate(0.95) contrast(0.95);
 }
 
-.tile-a { left: 8%;  top: 18%; }
-.tile-b { right: 6%; top: 12%; width: clamp(120px, 16vw, 200px); }
-.tile-c { left: 38%; top: 34%; width: clamp(160px, 26vw, 340px); }
-.tile-d { right: 10%; top: 60%; }
-.tile-e { left: 6%;  top: 72%; width: clamp(180px, 26vw, 360px); }
+.tile-a {
+  left: 8%;
+  top: 18%;
+}
+.tile-b {
+  right: 6%;
+  top: 12%;
+  width: clamp(120px, 16vw, 200px);
+}
+.tile-c {
+  left: 38%;
+  top: 34%;
+  width: clamp(160px, 26vw, 340px);
+}
+.tile-d {
+  right: 10%;
+  top: 60%;
+}
+.tile-e {
+  left: 6%;
+  top: 72%;
+  width: clamp(180px, 26vw, 360px);
+}
 
-/* Modal */
+/* -----------------------------
+   MODAL (Centered + refinements)
+   Refinements included:
+   1) Click-outside only close (no "×" styling here; hide it)
+   2) Subtle fade/scale animation
+   3) Tighter editorial bio styling
+-------------------------------- */
+
+/* Hide the "×" button (keeps HTML intact) */
+.modal-close {
+  display: none !important;
+}
+
 .modal {
   position: fixed;
   inset: 0;
-  display: none;
   z-index: 50;
+
+  /* keep it out of layout when closed */
+  display: none;
+
+  /* animation states */
+  opacity: 0;
+  pointer-events: none;
 }
 
 .modal.is-open {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 1;
+  pointer-events: auto;
+
+  /* soft fade in */
+  animation: modalFadeIn 160ms ease-out both;
 }
 
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(1px);
 }
 
+/* Centered panel */
 .modal-panel {
-  position: absolute;
-  left: 48px;
-  top: 110px;
-  width: min(520px, calc(100vw - 96px));
+  position: relative;
+  z-index: 1;
+
+  width: min(520px, calc(100vw - 72px));
   background: rgba(239, 233, 219, 0.98);
   border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
-  padding: 18px 18px 16px;
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.18);
+
+  padding: 26px 30px 24px;
+  text-align: center;
+
+  /* subtle scale in */
+  transform: translateY(6px) scale(0.985);
+  animation: panelIn 180ms ease-out both;
 }
 
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes panelIn {
+  from {
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header text (editorial) */
 .modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
+  display: block;
+  margin-bottom: 12px;
 }
 
 .modal-header h2 {
   margin: 0;
-  font-size: 13px;
-  letter-spacing: 0.12em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.7);
 }
 
-.modal-close {
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  font-size: 22px;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-.modal-close:hover {
-  color: rgba(0, 0, 0, 0.85);
+/* Bio styling (tighter, more editorial) */
+.modal-body {
+  max-width: 46ch;
+  margin: 0 auto;
 }
 
 .modal-body p {
   margin: 0 0 12px 0;
   font-size: 14px;
-  line-height: 1.55;
-  color: rgba(0, 0, 0, 0.65);
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.modal-body p:last-child {
+  margin-bottom: 0;
 }
 
 /* Mobile */
@@ -173,7 +239,22 @@ body {
   }
 
   .modal-panel {
-    left: 18px;
     width: calc(100vw - 36px);
+    padding: 22px 22px 20px;
+  }
+
+  .modal-body {
+    max-width: 42ch;
+  }
+}
+
+/* Reduced motion: respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  .modal.is-open {
+    animation: none;
+  }
+  .modal-panel {
+    animation: none;
+    transform: none;
   }
 }
