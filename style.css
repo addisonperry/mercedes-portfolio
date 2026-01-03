@@ -48,8 +48,8 @@ a {
   color: var(--red);
 
   font-family: "neue-haas-grotesk-display", sans-serif;
-  font-weight: 700;
-
+  font-weight: 500;
+  font-style: normal;
   font-size: 56px;
   letter-spacing: 0.08em;
   line-height: 1;
