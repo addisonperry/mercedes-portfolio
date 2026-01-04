@@ -206,6 +206,36 @@ body:has(.modal.is-open) .tile-wrap {
   color: rgba(0, 0, 0, 0.62);
 }
 
+/* =================================
+   ABOUT LINKS
+================================== */
+
+.about-links {
+  margin-top: 28px;
+
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.about-links a {
+  text-decoration: none;
+  color: inherit;
+
+  transition: color 150ms ease;
+}
+
+.about-links a:hover {
+  color: var(--red);
+}
+
+.about-links span {
+  margin: 0 10px;
+  color: rgba(0, 0, 0, 0.35);
+}
+
 /* RIGHT: about image column */
 .about-image {
   position: relative;
