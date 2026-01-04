@@ -138,9 +138,6 @@ a {
   font-size: 12px;
   line-height: 1.4;
   letter-spacing: 0.06em;
-  text-transform: uppercase;
-
-  color: rgba(0, 0, 0, 0.55);
 
   pointer-events: none;
 }
