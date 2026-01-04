@@ -47,6 +47,15 @@ a {
 }
 
 .top-text p {
+  font-style: normal;
+  transition: font-style 0.15s ease;
+}
+
+.top-text p:hover {
+  font-style: italic;
+}
+
+.top-text p {
   margin: 0;
   color: var(--red);
 
