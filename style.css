@@ -2,15 +2,20 @@
   --bg: #ffffff;
   --red: #b51d1d;
   --text: #111;
+  --page-pad: 64px;
 }
 
 * {
   box-sizing: border-box;
 }
 
-html,
-body {
+/* Sticky-friendly page sizing */
+html {
   height: 100%;
+}
+
+body {
+  min-height: 100%;
 }
 
 /* =================================
@@ -40,19 +45,10 @@ a {
 ================================== */
 
 .top-text {
-  padding: 36px 64px 0;
+  padding: 36px var(--page-pad) 0;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-}
-
-.top-text p {
-  font-style: normal;
-  transition: font-style 0.15s ease;
-}
-
-.top-text p:hover {
-  font-style: italic;
 }
 
 .top-text p {
@@ -64,6 +60,12 @@ a {
   font-style: normal;
   font-size: 70px;
   line-height: 1;
+
+  transition: font-style 0.15s ease;
+}
+
+.top-text p:hover {
+  font-style: italic;
 }
 
 .about-trigger {
@@ -94,7 +96,7 @@ a {
 .canvas {
   position: relative;
   min-height: 88vh;
-  padding: 32px 48px 72px;
+  padding: 32px var(--page-pad) 72px;
 }
 
 /* =================================
@@ -151,7 +153,6 @@ body:has(.modal.is-open) .tile-wrap {
 
 /* =================================
    ABOUT OVERLAY (FADE DOWN) + RIGHT IMAGE
-   NOTE: uses opacity/visibility instead of display:none
 ================================== */
 
 .modal {
@@ -162,7 +163,6 @@ body:has(.modal.is-open) .tile-wrap {
   justify-content: flex-start;
   align-items: flex-start;
 
-  /* hidden state (so transitions can run) */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -191,7 +191,7 @@ body:has(.modal.is-open) .tile-wrap {
   z-index: 2;
 
   max-width: 560px;
-  margin-left: 64px;
+  margin-left: var(--page-pad);
 
   opacity: 0;
   transform: translateY(-12px);
@@ -223,38 +223,23 @@ body:has(.modal.is-open) .tile-wrap {
   margin-top: 28px;
   font-size: 13px;
   letter-spacing: 0.12em;
-
   color: rgba(0, 0, 0, 0.55);
-}
 
-.about-links {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* optional spacing */
+  gap: 8px;
 }
 
 .about-links a {
   text-decoration: none;
   color: inherit;
 
-  transition: color 150ms ease;
+  font-style: normal;
+  transition: color 150ms ease, font-style 150ms ease;
 }
 
 .about-links a:hover {
   color: var(--red);
-}
-
-.about-links span {
-  margin: 0 10px;
-  color: rgba(0, 0, 0, 0.35);
-}
-
-.about-links a {
-  font-style: normal;
-  transition: font-style 0.15s ease;
-}
-
-.about-links a:hover {
   font-style: italic;
 }
 
@@ -264,7 +249,7 @@ body:has(.modal.is-open) .tile-wrap {
   z-index: 2;
 
   margin-left: auto;
-  margin-right: 64px;
+  margin-right: var(--page-pad);
 
   width: min(360px, 32vw);
   max-width: 420px;
@@ -295,10 +280,13 @@ body:has(.modal.is-open) .tile-wrap {
 }
 
 .project-layout {
-  padding: 56px 48px 72px;
+  padding: 56px var(--page-pad) 72px;
   display: grid;
   grid-template-columns: minmax(320px, 520px) 1fr;
   gap: 56px;
+
+  /* helps sticky behave predictably in grids */
+  align-items: start;
 }
 
 .project-text {
@@ -341,18 +329,17 @@ body:has(.modal.is-open) .tile-wrap {
 /* images */
 .project-media {
   display: grid;
-  gap: 18px;
-}
-
-.project-figure img {
-  width: 100%;
-  display: block;
+  gap: 10px; /* reduced from 18px */
 }
 
 .project-figure {
   margin: 0;
 }
 
+.project-figure img {
+  width: 100%;
+  display: block;
+}
 
 /* =================================
    BACK LINK
@@ -393,20 +380,18 @@ body:has(.modal.is-open) .tile-wrap {
 
   .project-text {
     position: static;
+    top: auto;
     padding-left: 0;
   }
 
-  /* Hide about image on smaller screens */
   .about-image {
     display: none;
   }
 }
 
 @media (max-width: 700px) {
-  .top-text,
-  .canvas {
-    padding-left: 18px;
-    padding-right: 18px;
+  :root {
+    --page-pad: 18px;
   }
 
   .top-text p {
@@ -419,23 +404,6 @@ body:has(.modal.is-open) .tile-wrap {
 
   .modal {
     padding-top: 135px;
-  }
-
-  .modal-panel {
-    margin-left: 18px;
-  }
-
-  .about-image {
-    margin-right: 18px;
-  }
-
-  .project-page .back-link {
-    left: 18px;
-    top: 24px;
-  }
-
-  .project-page .back-link img {
-    width: 24px;
   }
 }
 
