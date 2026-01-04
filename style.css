@@ -111,7 +111,17 @@ a {
 
   color: rgba(0, 0, 0, 0.55);
 
-  pointer-events: none; /* prevents hover conflict */
+  transform-origin: top left;
+  transition: transform 220ms ease, color 220ms ease;
+
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tile-wrap:hover .tile-caption {
+    transform: scale(1.05);
+    color: var(--red);
+  }
 }
 
 .tile-wrap {
