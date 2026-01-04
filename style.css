@@ -157,7 +157,7 @@ body:has(.modal.is-open) .tile-wrap {
   visibility: hidden;
   pointer-events: none;
 
-  padding-top: 135px;
+  padding-top: 175px;
 
   transition: opacity 220ms ease, visibility 0s linear 220ms;
 }
