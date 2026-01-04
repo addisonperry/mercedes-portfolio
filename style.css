@@ -25,9 +25,9 @@ body {
   font-family: "neue-haas-grotesk-display", system-ui, sans-serif;
 
   cursor: url("data:image/svg+xml;utf8,\
-  <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'>\
-  <path d='M32 6 C18 6 10 18 10 32 c0 14 8 26 22 26 c14 0 22-12 22-26 C54 18 46 6 32 6 Z' fill='none' stroke='%23b51d1d' stroke-width='3' />\
-  </svg>") 32 32, auto;
+  <svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'>\
+  <circle cx='22' cy='22' r='11' fill='%23b51d1d'/>\
+  </svg>") 22 22, auto;
 }
 
 button,
