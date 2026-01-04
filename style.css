@@ -191,7 +191,7 @@ body:has(.modal.is-open) .tile-wrap {
   z-index: 2;
 
   max-width: 560px;
-  margin-left: 48px;
+  margin-left: 64px;
 
   opacity: 0;
   transform: translateY(-12px);
@@ -264,7 +264,7 @@ body:has(.modal.is-open) .tile-wrap {
   z-index: 2;
 
   margin-left: auto;
-  margin-right: 48px;
+  margin-right: 64px;
 
   width: min(360px, 32vw);
   max-width: 420px;
