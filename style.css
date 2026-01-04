@@ -271,31 +271,37 @@ body:has(.modal.is-open) .tile-wrap {
    PROJECT PAGE – BACK LINK
 ================================== */
 
+/* =================================
+   PROJECT PAGE – BACK LINK (PNG)
+================================== */
+
 .project-page .back-link {
   position: fixed;
   top: 32px;
-  left: 48px;
+  left: 48px;        /* matches site padding */
   z-index: 20;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
+  padding: 8px;      /* invisible click area */
   text-decoration: none;
 }
 
 .project-page .back-link img {
-  width: 20px;      /* adjust to taste */
+  width: 28px;       /* bigger arrow */
   height: auto;
   display: block;
 
-  opacity: 0.6;
+  opacity: 0.65;
   transition: opacity 150ms ease;
 }
 
 .project-page .back-link:hover img {
-  opacity: 0.9;
+  opacity: 0.95;
 }
+
 
 /* Mobile */
 @media (max-width: 700px) {
