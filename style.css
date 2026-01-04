@@ -355,16 +355,9 @@ body:has(.modal.is-open) .tile-wrap {
 }
 
 .project-page .back-link img {
-  width: 48px;
+  width: 60px;
   height: auto;
   display: block;
-
-  opacity: 0.65;
-  transition: opacity 150ms ease;
-}
-
-.project-page .back-link:hover img {
-  opacity: 0.95;
 }
 
 /* =================================
