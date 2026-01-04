@@ -218,6 +218,12 @@ body:has(.modal.is-open) .tile-wrap {
   color: rgba(0, 0, 0, 0.55);
 }
 
+.about-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* optional spacing */
+}
+
 .about-links a {
   text-decoration: none;
   color: inherit;
