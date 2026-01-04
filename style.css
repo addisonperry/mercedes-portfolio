@@ -212,10 +212,8 @@ body:has(.modal.is-open) .tile-wrap {
 
 .about-links {
   margin-top: 28px;
-
   font-size: 13px;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
 
   color: rgba(0, 0, 0, 0.55);
 }
