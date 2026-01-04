@@ -306,10 +306,15 @@ body:has(.modal.is-open) .tile-wrap {
 /* Mobile */
 @media (max-width: 700px) {
   .project-page .back-link {
-    left: 18px;
+    left: 18px;     /* matches mobile padding */
     top: 24px;
   }
+
+  .project-page .back-link img {
+    width: 24px;
+  }
 }
+
 
 /* =================================
    MOBILE
