@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mercedes Ramirez</title>
+
+    <!-- Adobe Fonts: Neue Haas Grotesk -->
+    <link rel="stylesheet" href="https://use.typekit.net/wmc5lbu.css">
+
+    <!-- Site styles -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="top-text">
+      <p>mercedes ramirez</p>
+
+      <button class="about-trigger" type="button" aria-haspopup="dialog">
+        ABOUT
+      </button>
+    </header>
+
+    <main class="canvas">
+      <!-- Image collage -->
+      <div class="tile-wrap tile-a">
+        <img src="images/Image2.png" alt="" />
+      </div>
+
+      <div class="tile-wrap tile-b">
+        <img src="images/Image1.png" alt="" />
+      </div>
+
+      <div class="tile-wrap tile-c">
+        <img src="images/Image3.png" alt="" />
+      </div>
+
+      <div class="tile-wrap tile-d">
+        <img src="images/Image4.png" alt="" />
+      </div>
+
+      <div class="tile-wrap tile-e">
+        <img src="images/img-e.jpg" alt="" />
+      </div>
+    </main>
+
+    <!-- About overlay -->
+    <div class="modal" id="aboutModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close></div>
+
+      <div class="modal-panel" role="dialog" aria-modal="true">
+        <div class="modal-body">
+          <p>
+            Mercedes Ramirez is an architectural designer based in Los Angeles,
+            working across architecture, objects, and image-making with a focus on
+            quiet composition and material clarity. She received her Bachelor of
+            Architecture from Cal Poly Pomona, where her work emphasized careful
+            spatial sequencing, atmosphere, and the relationship between everyday
+            rituals and the built environment.
+          </p>
+
+          <p>
+            Her professional experience includes work with Lanza Atelier in Mexico
+            City and HSU McCullough in Los Angeles. Across these contexts, she has
+            contributed to projects from early concept development through
+            drawing-based refinement—valuing precision, restraint, and the
+            discipline of making ideas legible through plan, section, and detail.
+            This portfolio gathers selected studies and projects that explore
+            proportion, light, and the subtle weight of objects in space.
+          </p>
+
+          <p>
+            Outside of practice, Mercedes finds balance in time with family,
+            baking, and long walks with her dogs—rituals that shape her sensitivity
+            to the emotional weight of space. She is committed to people-centered
+            architecture that is community-driven, culturally aware, and socially
+            responsive, approaching design through empathy, collaboration, and
+            careful listening. Her goal is to contribute to work that meets
+            practical needs while fostering identity, belonging, and lasting
+            connection to place.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const openBtn = document.querySelector(".about-trigger");
+      const modal = document.getElementById("aboutModal");
+      const closeTargets = modal.querySelectorAll("[data-close]");
+
+      openBtn.addEventListener("click", () => {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      });
+
+      closeTargets.forEach((el) =>
+        el.addEventListener("click", () => {
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        })
+      );
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        }
+      });
+    </script>
+  </body>
+</html>
