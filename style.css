@@ -349,6 +349,11 @@ body:has(.modal.is-open) .tile-wrap {
   display: block;
 }
 
+.project-figure {
+  margin: 0;
+}
+
+
 /* =================================
    BACK LINK
 ================================== */
