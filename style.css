@@ -186,6 +186,142 @@ body:has(.modal.is-open) .tile-wrap {
 }
 
 /* =================================
+   PROJECT PAGE (TEXT LEFT / IMAGES RIGHT)
+================================== */
+
+.project-page {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Top nav */
+.project-header {
+  padding: 28px 48px 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.project-header .brand {
+  text-decoration: none;
+  color: var(--text);
+  font-family: neue-haas-grotesk-text, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.project-nav {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+}
+
+.project-nav a,
+.project-nav button {
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: none;
+
+  font-family: neue-haas-grotesk-text, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.85;
+}
+
+.project-nav a:hover,
+.project-nav button:hover {
+  opacity: 1;
+}
+
+/* Two-column layout */
+.project-layout {
+  padding: 56px 48px 72px;
+  display: grid;
+  grid-template-columns: minmax(320px, 520px) 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* Left column */
+.project-title {
+  margin: 0 0 18px 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+.project-body p {
+  margin: 0 0 14px 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+/* Meta block */
+.project-meta {
+  margin: 28px 0 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.project-meta dt {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.project-meta dd {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+/* Right column images */
+.project-media {
+  display: grid;
+  gap: 18px;
+}
+
+.project-figure {
+  margin: 0;
+}
+
+.project-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mobile: stack */
+@media (max-width: 900px) {
+  .project-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .project-header {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .project-layout {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+
+/* =================================
    MOBILE
 ================================== */
 
