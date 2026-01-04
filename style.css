@@ -163,7 +163,7 @@ body:has(.modal.is-open) .tile-wrap {
 .modal.is-open {
   display: flex;
   justify-content: flex-start;
-  padding-top: 150px;
+  padding-top: 120px;
 }
 
 .modal-backdrop {
