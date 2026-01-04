@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Project A — Mercedes Ramirez</title>
+    <title>Communal Kitchen Housing — Mercedes Ramirez</title>
 
     <!-- Adobe Fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/wmc5lbu.css" />
@@ -13,111 +13,99 @@
   </head>
 
   <body class="project-page">
-    <!-- SAME HEADER AS HOMEPAGE -->
-    <header class="top-text">
-      <p>mercedes ramirez</p>
-
-      <button class="about-trigger" type="button" aria-haspopup="dialog">
-        ABOUT
-      </button>
-    </header>
+    <!-- Back arrow -->
+    <a href="../index.html" class="back-link" aria-label="Back to home">
+      ←
+    </a>
 
     <!-- PROJECT LAYOUT -->
     <main class="project-layout">
       <!-- LEFT: TEXT -->
       <section class="project-text">
-        <h1 class="project-title">A Kitchen for Community</h1>
+        <h1 class="project-title">
+          Communal Kitchen Housing — Leimert Park
+        </h1>
 
-       <div class="project-body">
-        <p>
-          This project, located near Leimert Park along Crenshaw Blvd, extends the
-          intimate act of gathering into the urban fabric by combining affordable
-          housing with a communal kitchen. The family kitchen becomes a shared
-          community space—a nucleus for exchange that transcends place, generations,
-          and cultures. Just as my family kitchen fostered togetherness, this project
-          explores cooking and creation as a social and collaborative ritual.
-        </p>
-      
-        <p>
-          By diagramming the kitchen at an urban scale, the project transforms the
-          ground floor into an expansive sequence that mirrors the process of preparing
-          a meal: harvesting, storing, preparing, cooking, and eating. Each phase
-          reinforces the cyclical nature of food.
-        </p>
-      
-        <p>
-          Housing units are organized around a central courtyard to encourage
-          spontaneous interaction. A network of shared outdoor spaces—ranging from
-          larger communal courtyards to smaller, semi-private thresholds—brings
-          openness and breathing room into a dense environment. These layered
-          thresholds blur the line between public and private, allowing residents to
-          engage at varying levels of intimacy.
-        </p>
-      
-        <p>
-          Above, four distinct towers emerge, each shaped by roofscapes featuring food
-          gardens, greenhouses, solar panels, and outdoor kitchens—spaces that extend
-          communal life vertically. Housing types range from studios to two-bedroom
-          units, accommodating families, culinary students, and chefs. Units are
-          connected by micro-courtyards and shared terraces that promote everyday
-          interaction and visual connection.
-        </p>
-      </div>
+        <div class="project-body">
+          <p>
+            This project, located near Leimert Park along Crenshaw Blvd, extends the
+            intimate act of gathering into the urban fabric by combining affordable
+            housing with a communal kitchen. The family kitchen becomes a shared
+            community space—a nucleus for exchange that transcends place,
+            generations, and cultures. Just as my family kitchen fostered
+            togetherness, this project explores cooking and creation as a social
+            and collaborative ritual.
+          </p>
+
+          <p>
+            By diagramming the kitchen at an urban scale, the project transforms
+            the ground floor into an expansive sequence that mirrors the process
+            of preparing a meal: harvesting, storing, preparing, cooking, and
+            eating. Each phase reinforces the cyclical nature of food.
+          </p>
+
+          <p>
+            Housing units are organized around a central courtyard to encourage
+            spontaneous interaction. A network of shared outdoor spaces—ranging
+            from larger communal courtyards to smaller, semi-private
+            thresholds—brings openness and breathing room into a dense
+            environment. These layered thresholds blur the line between public and
+            private, allowing residents to engage at varying levels of intimacy.
+          </p>
+
+          <p>
+            Above, four distinct towers emerge, each shaped by roofscapes
+            featuring food gardens, greenhouses, solar panels, and outdoor
+            kitchens—spaces that extend communal life vertically. Housing types
+            range from studios to two-bedroom units, accommodating families,
+            culinary students, and chefs. Units are connected by micro-courtyards
+            and shared terraces that promote everyday interaction and visual
+            connection.
+          </p>
+        </div>
+
+        <!-- Optional metadata block (remove if you want it even quieter) -->
+        <dl class="project-meta">
+          <div>
+            <dt>Location</dt>
+            <dd>Leimert Park, Los Angeles</dd>
+          </div>
+
+          <div>
+            <dt>Program</dt>
+            <dd>Affordable Housing + Communal Kitchen</dd>
+          </div>
+
+          <div>
+            <dt>Focus</dt>
+            <dd>Community, Food, Shared Rituals</dd>
+          </div>
+        </dl>
       </section>
 
       <!-- RIGHT: IMAGES -->
       <section class="project-media">
         <figure class="project-figure">
-          <img src="../images/Image4.png" alt="Project A installation view" />
+          <img
+            src="../images/Image4.png"
+            alt="Communal kitchen and housing massing view"
+          />
         </figure>
 
         <figure class="project-figure">
-          <img src="../images/Image3.png" alt="Secondary installation view" />
+          <img
+            src="../images/Image3.png"
+            alt="Courtyard and shared outdoor space diagram"
+          />
+        </figure>
+
+        <figure class="project-figure">
+          <img
+            src="../images/Image2.png"
+            alt="Roofscape with gardens and outdoor kitchens"
+          />
         </figure>
       </section>
     </main>
-
-    <!-- SAME ABOUT MODAL -->
-    <div class="modal" id="aboutModal" aria-hidden="true">
-      <div class="modal-backdrop" data-close></div>
-      <div class="modal-panel" role="dialog" aria-modal="true">
-        <div class="modal-body">
-          <p>
-            Mercedes Ramirez is an architectural designer based in Los Angeles,
-            working across architecture, objects, and image-making with a focus on
-            quiet composition and material clarity.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SAME SCRIPT -->
-    <script>
-      const openBtn = document.querySelector(".about-trigger");
-      const modal = document.getElementById("aboutModal");
-      const closeTargets = modal.querySelectorAll("[data-close]");
-
-      openBtn.addEventListener("click", () => {
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-      });
-
-      closeTargets.forEach((el) =>
-        el.addEventListener("click", () => {
-          modal.classList.remove("is-open");
-          modal.setAttribute("aria-hidden", "true");
-          document.body.style.overflow = "";
-        })
-      );
-
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          modal.classList.remove("is-open");
-          modal.setAttribute("aria-hidden", "true");
-          document.body.style.overflow = "";
-        }
-      });
-    </script>
   </body>
 </html>
