@@ -290,7 +290,7 @@ body:has(.modal.is-open) .tile-wrap {
 }
 
 .project-page .back-link img {
-  width: 28px;       /* bigger arrow */
+  width: 48px;       /* bigger arrow */
   height: auto;
   display: block;
 
