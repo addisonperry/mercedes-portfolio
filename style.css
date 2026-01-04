@@ -277,16 +277,24 @@ body:has(.modal.is-open) .tile-wrap {
   left: 48px;
   z-index: 20;
 
-  text-decoration: none;
-  font-size: 20px;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.6);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  transition: color 150ms ease;
+  text-decoration: none;
 }
 
-.project-page .back-link:hover {
-  color: rgba(0, 0, 0, 0.9);
+.project-page .back-link img {
+  width: 20px;      /* adjust to taste */
+  height: auto;
+  display: block;
+
+  opacity: 0.6;
+  transition: opacity 150ms ease;
+}
+
+.project-page .back-link:hover img {
+  opacity: 0.9;
 }
 
 /* Mobile */
