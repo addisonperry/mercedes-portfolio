@@ -24,10 +24,7 @@ body {
 
   font-family: "neue-haas-grotesk-display", system-ui, sans-serif;
 
-  cursor: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'>\
-<circle cx='22' cy='22' r='11' fill='%23b51d1d'/>\
-</svg>") 22 22, auto;
+  cursor: url("images/spiralcursor.png") 16 16, auto;
 }
 
 button,
