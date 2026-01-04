@@ -103,6 +103,17 @@ a {
    IMAGE TILES
 ================================== */
 
+.tile-caption {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+
+  color: rgba(0, 0, 0, 0.55);
+
+  pointer-events: none; /* prevents hover conflict */
+}
+
 .tile-wrap {
   position: absolute;
   overflow: visible;
