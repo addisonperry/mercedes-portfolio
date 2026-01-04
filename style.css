@@ -141,7 +141,7 @@ body:has(.modal.is-open) .tile-wrap {
 }
 
 /* =================================
-   ABOUT OVERLAY (FADE DOWN)
+   ABOUT OVERLAY (FADE DOWN) + RIGHT IMAGE
    NOTE: uses opacity/visibility instead of display:none
 ================================== */
 
@@ -151,6 +151,7 @@ body:has(.modal.is-open) .tile-wrap {
 
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
 
   /* hidden state (so transitions can run) */
   opacity: 0;
@@ -175,8 +176,11 @@ body:has(.modal.is-open) .tile-wrap {
   inset: 0;
 }
 
-/* panel fade + drop */
+/* LEFT: text panel fade + drop */
 .modal-panel {
+  position: relative;
+  z-index: 2;
+
   max-width: 560px;
   margin-left: 48px;
 
@@ -200,6 +204,34 @@ body:has(.modal.is-open) .tile-wrap {
   font-size: 15px;
   line-height: 1.75;
   color: rgba(0, 0, 0, 0.62);
+}
+
+/* RIGHT: about image column */
+.about-image {
+  position: relative;
+  z-index: 2;
+
+  margin-left: auto;
+  margin-right: 48px;
+
+  width: min(360px, 32vw);
+  max-width: 420px;
+
+  opacity: 0;
+  transform: translateY(-12px);
+
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+
+.modal.is-open .about-image {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* =================================
@@ -306,6 +338,11 @@ body:has(.modal.is-open) .tile-wrap {
     position: static;
     padding-left: 0;
   }
+
+  /* Hide about image on smaller screens */
+  .about-image {
+    display: none;
+  }
 }
 
 @media (max-width: 700px) {
@@ -331,6 +368,10 @@ body:has(.modal.is-open) .tile-wrap {
     margin-left: 18px;
   }
 
+  .about-image {
+    margin-right: 18px;
+  }
+
   .project-page .back-link {
     left: 18px;
     top: 24px;
@@ -347,11 +388,13 @@ body:has(.modal.is-open) .tile-wrap {
 
 @media (prefers-reduced-motion: reduce) {
   .modal,
-  .modal-panel {
+  .modal-panel,
+  .about-image {
     transition: none;
   }
 
-  .modal-panel {
+  .modal-panel,
+  .about-image {
     transform: none;
   }
 
