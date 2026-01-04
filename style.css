@@ -41,6 +41,7 @@ a {
 
 .top-text {
   padding: 36px 48px 0;
+
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -89,7 +90,7 @@ a {
 }
 
 /* =================================
-   IMAGE TILES
+   IMAGE TILES (CLICKABLE)
 ================================== */
 
 .tile-wrap {
@@ -191,53 +192,6 @@ body:has(.modal.is-open) .tile-wrap {
 
 .project-page {
   background: var(--bg);
-  color: var(--text);
-}
-
-/* Top nav */
-.project-header {
-  padding: 28px 48px 0;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.project-header .brand {
-  text-decoration: none;
-  color: var(--text);
-  font-family: neue-haas-grotesk-text, sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 14px;
-}
-
-.project-nav {
-  display: flex;
-  gap: 32px;
-  align-items: baseline;
-}
-
-.project-nav a,
-.project-nav button {
-  background: none;
-  border: 0;
-  padding: 0;
-  text-decoration: none;
-
-  font-family: neue-haas-grotesk-text, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text);
-  opacity: 0.85;
-}
-
-.project-nav a:hover,
-.project-nav button:hover {
-  opacity: 1;
 }
 
 /* Two-column layout */
@@ -265,7 +219,7 @@ body:has(.modal.is-open) .tile-wrap {
   color: rgba(0, 0, 0, 0.72);
 }
 
-/* Meta block */
+/* Metadata */
 .project-meta {
   margin: 28px 0 0 0;
   display: grid;
@@ -302,28 +256,19 @@ body:has(.modal.is-open) .tile-wrap {
   display: block;
 }
 
-/* Mobile: stack */
+/* =================================
+   MOBILE
+================================== */
+
 @media (max-width: 900px) {
+  /* Project layout stacks */
   .project-layout {
     grid-template-columns: 1fr;
     gap: 28px;
-  }
-
-  .project-header {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .project-layout {
     padding-left: 18px;
     padding-right: 18px;
   }
 }
-
-
-/* =================================
-   MOBILE
-================================== */
 
 @media (max-width: 700px) {
   .top-text,
