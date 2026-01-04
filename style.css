@@ -100,29 +100,8 @@ a {
 }
 
 /* =================================
-   IMAGE TILES
+   IMAGE TILES (SCALE AS ONE UNIT)
 ================================== */
-
-.tile-caption {
-  margin-top: 8px;
-  font-size: 12px;
-  line-height: 1.4;
-  letter-spacing: 0.06em;
-
-  color: rgba(0, 0, 0, 0.55);
-
-  transform-origin: top left;
-  transition: transform 220ms ease, color 220ms ease;
-
-  pointer-events: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .tile-wrap:hover .tile-caption {
-    transform: scale(1.05);
-    color: var(--red);
-  }
-}
 
 .tile-wrap {
   position: absolute;
@@ -130,28 +109,55 @@ a {
   z-index: 1;
 }
 
+/* clickable overlay that covers image + caption */
 .tile-link {
-  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   text-decoration: none;
   color: inherit;
 }
 
-.tile-wrap img {
-  display: block;
-  width: 100%;
-  height: auto;
+/* the single box that scales (image + caption together) */
+.tile-card {
+  position: relative;
+  z-index: 1;
+
   transform-origin: center;
   transition: transform 220ms ease;
 }
 
+.tile-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tile-caption {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  color: rgba(0, 0, 0, 0.55);
+
+  pointer-events: none;
+}
+
+/* hover + focus behavior */
 @media (hover: hover) and (pointer: fine) {
   .tile-wrap:hover {
     z-index: 10;
   }
 
-  .tile-link:hover img,
-  .tile-link:focus-visible img {
+  .tile-wrap:hover .tile-card,
+  .tile-link:focus-visible + .tile-card {
     transform: scale(1.05);
+  }
+
+  .tile-wrap:hover .tile-caption {
+    color: var(--red);
   }
 }
 
@@ -305,8 +311,6 @@ body:has(.modal.is-open) .tile-wrap {
   display: grid;
   grid-template-columns: minmax(320px, 520px) 1fr;
   gap: 56px;
-
-  /* helps sticky behave predictably in grids */
   align-items: start;
 }
 
@@ -350,7 +354,7 @@ body:has(.modal.is-open) .tile-wrap {
 /* images */
 .project-media {
   display: grid;
-  gap: 16px; /* reduced from 18px */
+  gap: 16px;
 }
 
 .project-figure {
@@ -448,7 +452,7 @@ body:has(.modal.is-open) .tile-wrap {
     transform: none;
   }
 
-  .tile-wrap img {
+  .tile-card {
     transition: none;
   }
 }
