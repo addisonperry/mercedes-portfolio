@@ -350,7 +350,7 @@ body:has(.modal.is-open) .tile-wrap {
   top: 32px;
   left: var(--page-pad);
   z-index: 20;
-  padding: 8px;
+  padding: 20px;
   text-decoration: none;
 }
 
@@ -358,6 +358,17 @@ body:has(.modal.is-open) .tile-wrap {
   width: 60px;
   height: auto;
   display: block;
+}
+
+@keyframes arrow-wiggle {
+  0%   { transform: translateX(0); }
+  30%  { transform: translateX(-6px); }
+  60%  { transform: translateX(-3px); }
+  100% { transform: translateX(-6px); }
+}
+
+.project-page .back-link:hover img {
+  animation: arrow-wiggle 320ms ease-out forwards;
 }
 
 /* =================================
