@@ -163,7 +163,7 @@ body:has(.modal.is-open) .tile-wrap {
 .modal.is-open {
   display: flex;
   justify-content: flex-start;
-  padding-top: 120px;
+  padding-top: 135px;
 }
 
 .modal-backdrop {
@@ -275,7 +275,7 @@ body:has(.modal.is-open) .tile-wrap {
 .project-page .back-link {
   position: fixed;
   top: 32px;
-  left: 48px; /* matches site padding */
+  left: 70px; /* matches site padding */
   z-index: 20;
 
   display: inline-flex;
@@ -290,13 +290,6 @@ body:has(.modal.is-open) .tile-wrap {
   width: 48px; /* bigger arrow */
   height: auto;
   display: block;
-
-  opacity: 0.65;
-  transition: opacity 150ms ease;
-}
-
-.project-page .back-link:hover img {
-  opacity: 0.95;
 }
 
 /* =================================
