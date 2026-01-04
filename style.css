@@ -151,7 +151,7 @@ body:has(.modal.is-open) .tile-wrap {
 }
 
 /* =================================
-   ABOUT OVERLAY
+   ABOUT OVERLAY (LEFT-ALIGNED TO HEADER)
 ================================== */
 
 .modal {
@@ -173,11 +173,12 @@ body:has(.modal.is-open) .tile-wrap {
 
 .modal-panel {
   max-width: 560px;
-  margin-left: 48px;   /* aligns with page padding */
+  margin-left: 48px; /* aligns with header/logo left edge */
 }
 
+/* IMPORTANT: remove extra padding that was doubling the left offset */
 .modal-body {
-  padding: 0 48px;
+  padding: 0;
 }
 
 .modal-body p {
@@ -207,8 +208,11 @@ body:has(.modal.is-open) .tile-wrap {
 /* LEFT COLUMN STAYS FIXED WHILE IMAGES SCROLL */
 .project-text {
   position: sticky;
-  top: 120px;     /* adjust if you want it higher/lower */
+  top: 120px;
   align-self: start;
+
+  /* give the text breathing room from the left edge */
+  padding-left: 32px;
 }
 
 /* Left column */
@@ -263,14 +267,6 @@ body:has(.modal.is-open) .tile-wrap {
   height: auto;
   display: block;
 }
-.project-text {
-  padding-left: 32px;
-}
-
-
-/* =================================
-   PROJECT PAGE – BACK LINK
-================================== */
 
 /* =================================
    PROJECT PAGE – BACK LINK (PNG)
@@ -279,36 +275,29 @@ body:has(.modal.is-open) .tile-wrap {
 .project-page .back-link {
   position: fixed;
   top: 32px;
-  left: 70px;        /* matches site padding */
+  left: 48px; /* matches site padding */
   z-index: 20;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 8px;      /* invisible click area */
+  padding: 8px; /* invisible click area */
   text-decoration: none;
 }
 
 .project-page .back-link img {
-  width: 48px;       /* bigger arrow */
+  width: 48px; /* bigger arrow */
   height: auto;
   display: block;
+
+  opacity: 0.65;
+  transition: opacity 150ms ease;
 }
 
-
-/* Mobile */
-@media (max-width: 700px) {
-  .project-page .back-link {
-    left: 18px;     /* matches mobile padding */
-    top: 24px;
-  }
-
-  .project-page .back-link img {
-    width: 24px;
-  }
+.project-page .back-link:hover img {
+  opacity: 0.95;
 }
-
 
 /* =================================
    MOBILE
@@ -323,9 +312,10 @@ body:has(.modal.is-open) .tile-wrap {
     padding-right: 18px;
   }
 
-  /* Disable sticky on mobile (feels better stacked) */
+  /* Disable sticky on mobile */
   .project-text {
     position: static;
+    padding-left: 0;
   }
 }
 
@@ -348,17 +338,24 @@ body:has(.modal.is-open) .tile-wrap {
     padding-top: 120px;
   }
 
-  .modal-body {
-    padding: 0 18px;
-  }
-}
-
-@media (max-width: 700px) {
   .modal-panel {
-    margin-left: 18px;
+    margin-left: 18px; /* aligns with mobile header padding */
+  }
+
+  /* IMPORTANT: keep this 0 so it doesn't double-offset */
+  .modal-body {
+    padding: 0;
+  }
+
+  .project-page .back-link {
+    left: 18px;
+    top: 24px;
+  }
+
+  .project-page .back-link img {
+    width: 24px;
   }
 }
-
 
 /* =================================
    REDUCED MOTION
