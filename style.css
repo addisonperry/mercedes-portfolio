@@ -240,6 +240,15 @@ body:has(.modal.is-open) .tile-wrap {
   color: rgba(0, 0, 0, 0.35);
 }
 
+.about-links a {
+  font-style: normal;
+  transition: font-style 0.15s ease;
+}
+
+.about-links a:hover {
+  font-style: italic;
+}
+
 /* RIGHT: about image column */
 .about-image {
   position: relative;
