@@ -308,7 +308,7 @@ body:has(.modal.is-open) .tile-wrap {
   }
 
   .modal.is-open {
-    padding-top: 120px;
+    padding-top: 135px;
   }
 
   .modal-panel {
