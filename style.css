@@ -203,6 +203,13 @@ body:has(.modal.is-open) .tile-wrap {
   align-items: start;
 }
 
+/* LEFT COLUMN STAYS FIXED WHILE IMAGES SCROLL */
+.project-text {
+  position: sticky;
+  top: 120px;     /* adjust if you want it higher/lower */
+  align-self: start;
+}
+
 /* Left column */
 .project-title {
   margin: 0 0 18px 0;
@@ -286,7 +293,6 @@ body:has(.modal.is-open) .tile-wrap {
   }
 }
 
-
 /* =================================
    MOBILE
 ================================== */
@@ -298,6 +304,11 @@ body:has(.modal.is-open) .tile-wrap {
     gap: 28px;
     padding-left: 18px;
     padding-right: 18px;
+  }
+
+  /* Disable sticky on mobile (feels better stacked) */
+  .project-text {
+    position: static;
   }
 }
 
