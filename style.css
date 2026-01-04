@@ -350,7 +350,7 @@ body:has(.modal.is-open) .tile-wrap {
   top: 32px;
   left: var(--page-pad);
   z-index: 20;
-  padding: 20px;
+  padding: 30px;
   text-decoration: none;
 }
 
