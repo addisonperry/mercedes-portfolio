@@ -278,7 +278,7 @@ body:has(.modal.is-open) .tile-wrap {
 .project-page .back-link {
   position: fixed;
   top: 32px;
-  left: 60px;        /* matches site padding */
+  left: 70px;        /* matches site padding */
   z-index: 20;
 
   display: inline-flex;
