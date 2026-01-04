@@ -8,29 +8,25 @@
     <!-- Adobe Fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/wmc5lbu.css" />
 
-    <!-- Use your same stylesheet -->
+    <!-- Main site styles -->
     <link rel="stylesheet" href="../style.css" />
   </head>
 
   <body class="project-page">
-    <!-- Top nav -->
-    <header class="project-header">
-      <a class="brand" href="../index.html">mercedes ramirez</a>
+    <!-- SAME HEADER AS HOMEPAGE -->
+    <header class="top-text">
+      <p>mercedes ramirez</p>
 
-      <nav class="project-nav">
-        <a href="../index.html">Projects</a>
-        <a href="../index.html#news">News</a>
-        <button class="about-trigger" type="button" aria-haspopup="dialog">
-          Info
-        </button>
-      </nav>
+      <button class="about-trigger" type="button" aria-haspopup="dialog">
+        ABOUT
+      </button>
     </header>
 
-    <!-- Two-column layout -->
+    <!-- PROJECT LAYOUT -->
     <main class="project-layout">
-      <!-- LEFT: text -->
+      <!-- LEFT: TEXT -->
       <section class="project-text">
-        <h1 class="project-title">MARCO Museum: In the garden</h1>
+        <h1 class="project-title">A Kitchen for Community</h1>
 
         <div class="project-body">
           <p>
@@ -49,51 +45,26 @@
           <p>
             This axis materializes in a line 80 meters long and 3 meters high. It
             is a structure made of oak wood that expands the exhibition surfaces
-            with a rational logic, and that has supports that subtly refer to the
-            idea of a tree.
+            with a rational logic.
           </p>
         </div>
-
-        <dl class="project-meta">
-          <div>
-            <dt>Production</dt>
-            <dd>CTAC A.C. and MARCO</dd>
-          </div>
-
-          <div>
-            <dt>Curatorship</dt>
-            <dd>Magnolia de la Garza</dd>
-          </div>
-
-          <div>
-            <dt>Design team</dt>
-            <dd>Raya Shaban, Isabel Abascal, Alessandro Arienzo</dd>
-          </div>
-
-          <div>
-            <dt>Photography</dt>
-            <dd>Michelle Lartigue</dd>
-          </div>
-        </dl>
       </section>
 
-      <!-- RIGHT: images -->
+      <!-- RIGHT: IMAGES -->
       <section class="project-media">
         <figure class="project-figure">
-          <img src="../images/Image4.png" alt="Project A hero image" />
+          <img src="../images/Image4.png" alt="Project A installation view" />
         </figure>
 
-        <!-- Optional: more images stacked -->
         <figure class="project-figure">
-          <img src="../images/Image3.png" alt="Secondary image" />
+          <img src="../images/Image3.png" alt="Secondary installation view" />
         </figure>
       </section>
     </main>
 
-    <!-- Reuse your existing About modal -->
+    <!-- SAME ABOUT MODAL -->
     <div class="modal" id="aboutModal" aria-hidden="true">
       <div class="modal-backdrop" data-close></div>
-
       <div class="modal-panel" role="dialog" aria-modal="true">
         <div class="modal-body">
           <p>
@@ -105,6 +76,7 @@
       </div>
     </div>
 
+    <!-- SAME SCRIPT -->
     <script>
       const openBtn = document.querySelector(".about-trigger");
       const modal = document.getElementById("aboutModal");
@@ -119,3 +91,18 @@
       closeTargets.forEach((el) =>
         el.addEventListener("click", () => {
           modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        })
+      );
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        }
+      });
+    </script>
+  </body>
+</html>
