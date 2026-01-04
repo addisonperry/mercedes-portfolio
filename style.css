@@ -341,7 +341,7 @@ body:has(.modal.is-open) .tile-wrap {
 /* images */
 .project-media {
   display: grid;
-  gap: 18px;
+  gap: 8px;
 }
 
 .project-figure img {
