@@ -3,49 +3,94 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mercedes Ramirez</title>
+    <title>Project A — Mercedes Ramirez</title>
 
-    <!-- Adobe Fonts: Neue Haas Grotesk -->
-    <link rel="stylesheet" href="https://use.typekit.net/wmc5lbu.css">
+    <!-- Adobe Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/wmc5lbu.css" />
 
-    <!-- Site styles -->
-    <link rel="stylesheet" href="style.css" />
+    <!-- Use your same stylesheet -->
+    <link rel="stylesheet" href="../style.css" />
   </head>
 
-  <body>
-    <!-- Header -->
-    <header class="top-text">
-      <p>mercedes ramirez</p>
+  <body class="project-page">
+    <!-- Top nav -->
+    <header class="project-header">
+      <a class="brand" href="../index.html">mercedes ramirez</a>
 
-      <button class="about-trigger" type="button" aria-haspopup="dialog">
-        ABOUT
-      </button>
+      <nav class="project-nav">
+        <a href="../index.html">Projects</a>
+        <a href="../index.html#news">News</a>
+        <button class="about-trigger" type="button" aria-haspopup="dialog">
+          Info
+        </button>
+      </nav>
     </header>
 
-    <main class="canvas">
-      <!-- Image collage -->
-      <div class="tile-wrap tile-a">
-        <img src="images/Image2.png" alt="" />
-      </div>
+    <!-- Two-column layout -->
+    <main class="project-layout">
+      <!-- LEFT: text -->
+      <section class="project-text">
+        <h1 class="project-title">MARCO Museum: In the garden</h1>
 
-      <div class="tile-wrap tile-b">
-        <img src="images/Image1.png" alt="" />
-      </div>
+        <div class="project-body">
+          <p>
+            This exhibition design connects two complex and heterogeneous spaces.
+            On the one hand, the Garden, represented by a curatorial selection of
+            works from the Coppel Collection. On the other hand, the Marco Museum
+            with its strong postmodern Legorretaian presence.
+          </p>
 
-      <div class="tile-wrap tile-c">
-        <img src="images/Image3.png" alt="" />
-      </div>
+          <p>
+            We established an axis of symmetry throughout the four spaces, and
+            duplicated certain walls to obtain symmetrical thresholds and create
+            new rooms for video installations and sculpture.
+          </p>
 
-      <div class="tile-wrap tile-d">
-        <img src="images/Image4.png" alt="" />
-      </div>
+          <p>
+            This axis materializes in a line 80 meters long and 3 meters high. It
+            is a structure made of oak wood that expands the exhibition surfaces
+            with a rational logic, and that has supports that subtly refer to the
+            idea of a tree.
+          </p>
+        </div>
 
-      <div class="tile-wrap tile-e">
-        <img src="images/img-e.jpg" alt="" />
-      </div>
+        <dl class="project-meta">
+          <div>
+            <dt>Production</dt>
+            <dd>CTAC A.C. and MARCO</dd>
+          </div>
+
+          <div>
+            <dt>Curatorship</dt>
+            <dd>Magnolia de la Garza</dd>
+          </div>
+
+          <div>
+            <dt>Design team</dt>
+            <dd>Raya Shaban, Isabel Abascal, Alessandro Arienzo</dd>
+          </div>
+
+          <div>
+            <dt>Photography</dt>
+            <dd>Michelle Lartigue</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- RIGHT: images -->
+      <section class="project-media">
+        <figure class="project-figure">
+          <img src="../images/Image4.png" alt="Project A hero image" />
+        </figure>
+
+        <!-- Optional: more images stacked -->
+        <figure class="project-figure">
+          <img src="../images/Image3.png" alt="Secondary image" />
+        </figure>
+      </section>
     </main>
 
-    <!-- About overlay -->
+    <!-- Reuse your existing About modal -->
     <div class="modal" id="aboutModal" aria-hidden="true">
       <div class="modal-backdrop" data-close></div>
 
@@ -54,31 +99,7 @@
           <p>
             Mercedes Ramirez is an architectural designer based in Los Angeles,
             working across architecture, objects, and image-making with a focus on
-            quiet composition and material clarity. She received her Bachelor of
-            Architecture from Cal Poly Pomona, where her work emphasized careful
-            spatial sequencing, atmosphere, and the relationship between everyday
-            rituals and the built environment.
-          </p>
-
-          <p>
-            Her professional experience includes work with Lanza Atelier in Mexico
-            City and HSU McCullough in Los Angeles. Across these contexts, she has
-            contributed to projects from early concept development through
-            drawing-based refinement—valuing precision, restraint, and the
-            discipline of making ideas legible through plan, section, and detail.
-            This portfolio gathers selected studies and projects that explore
-            proportion, light, and the subtle weight of objects in space.
-          </p>
-
-          <p>
-            Outside of practice, Mercedes finds balance in time with family,
-            baking, and long walks with her dogs—rituals that shape her sensitivity
-            to the emotional weight of space. She is committed to people-centered
-            architecture that is community-driven, culturally aware, and socially
-            responsive, approaching design through empathy, collaboration, and
-            careful listening. Her goal is to contribute to work that meets
-            practical needs while fostering identity, belonging, and lasting
-            connection to place.
+            quiet composition and material clarity.
           </p>
         </div>
       </div>
@@ -98,18 +119,3 @@
       closeTargets.forEach((el) =>
         el.addEventListener("click", () => {
           modal.classList.remove("is-open");
-          modal.setAttribute("aria-hidden", "true");
-          document.body.style.overflow = "";
-        })
-      );
-
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          modal.classList.remove("is-open");
-          modal.setAttribute("aria-hidden", "true");
-          document.body.style.overflow = "";
-        }
-      });
-    </script>
-  </body>
-</html>
