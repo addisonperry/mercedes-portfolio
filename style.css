@@ -262,6 +262,10 @@ body:has(.modal.is-open) .tile-wrap {
   height: auto;
   display: block;
 }
+.project-text {
+  padding-left: 32px;
+}
+
 
 /* =================================
    PROJECT PAGE – BACK LINK
