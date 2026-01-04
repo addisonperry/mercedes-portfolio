@@ -25,9 +25,9 @@ body {
   font-family: "neue-haas-grotesk-display", system-ui, sans-serif;
 
   cursor: url("data:image/svg+xml;utf8,\
-  <svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'>\
-  <circle cx='22' cy='22' r='11' fill='%23b51d1d'/>\
-  </svg>") 22 22, auto;
+<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'>\
+<circle cx='22' cy='22' r='11' fill='%23b51d1d'/>\
+</svg>") 22 22, auto;
 }
 
 button,
@@ -41,7 +41,6 @@ a {
 
 .top-text {
   padding: 36px 48px 0;
-
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -99,6 +98,17 @@ a {
   z-index: 1;
 }
 
+/* Make the link fill the tile so hover/click feels natural */
+.tile-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tile-link:focus {
+  outline: none;
+}
+
 .tile-wrap img {
   display: block;
   width: 100%;
@@ -108,14 +118,22 @@ a {
   transition: transform 220ms ease;
 }
 
+/* Hover + keyboard focus scale */
 @media (hover: hover) and (pointer: fine) {
   .tile-wrap:hover {
     z-index: 10;
   }
 
-  .tile-wrap:hover img {
+  .tile-link:hover img,
+  .tile-link:focus-visible img {
     transform: scale(1.05);
   }
+}
+
+/* Optional: subtle focus ring for accessibility */
+.tile-link:focus-visible {
+  outline: 2px solid rgba(181, 29, 29, 0.35);
+  outline-offset: 6px;
 }
 
 /* positioning + sizing */
