@@ -148,6 +148,16 @@ a {
   pointer-events: none;
 }
 
+.tile-title {
+  white-space: nowrap;
+}
+
+.tile-year {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.45);
+}
+
 /* hover + focus behavior */
 @media (hover: hover) and (pointer: fine) {
   .tile-wrap:hover {
