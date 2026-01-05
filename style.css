@@ -2,7 +2,15 @@
   --bg: #ffffff;
   --red: #b51d1d;
   --text: #111;
-  --page-pad: 64px;
+
+  /* Fluid frame padding: grows with screen */
+  --page-pad: clamp(18px, 3.5vw, 120px);
+
+  /* Fluid type scale */
+  --header-size: clamp(40px, 6.5vw, 140px);
+  --body-size: clamp(14px, 1.05vw, 18px);
+  --caption-size: clamp(12px, 0.85vw, 14px);
+  --year-size: clamp(11px, 0.8vw, 13px);
 }
 
 * {
@@ -58,7 +66,7 @@ a {
   font-family: neue-haas-grotesk-text, sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-size: 100px;
+  font-size: var(--header-size);
   line-height: 1;
 
   transition: font-style 0.15s ease;
@@ -73,7 +81,7 @@ a {
   border: 0;
   padding: 0;
 
-  font-size: 15px;
+  font-size: clamp(13px, 0.95vw, 16px);
   font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -141,7 +149,7 @@ a {
   align-items: baseline;
   gap: 12px;
 
-  font-size: 12px;
+  font-size: var(--caption-size);
   line-height: 1.4;
   letter-spacing: 0.06em;
 
@@ -153,11 +161,10 @@ a {
 }
 
 .tile-year {
-  font-size: 11px;
+  font-size: var(--year-size);
   letter-spacing: 0.08em;
   font-style: italic;
 }
-
 
 /* hover + focus behavior */
 @media (hover: hover) and (pointer: fine) {
@@ -176,11 +183,11 @@ a {
   outline-offset: 6px;
 }
 
-/* positioning */
-.tile-a { left: 8%; top: 18%; width: clamp(160px, 26vw, 340px); }
-.tile-b { right: 6%; top: 12%; width: clamp(160px, 26vw, 340px); }
-.tile-c { left: 38%; top: 34%; width: clamp(160px, 26vw, 340px); }
-.tile-d { right: 10%; top: 60%; width: clamp(120px, 18vw, 220px); }
+/* positioning (bigger caps for large screens) */
+.tile-a { left: 8%;  top: 18%; width: clamp(220px, 26vw, 520px); }
+.tile-b { right: 6%; top: 12%; width: clamp(220px, 26vw, 520px); }
+.tile-c { left: 38%; top: 34%; width: clamp(220px, 26vw, 520px); }
+.tile-d { right: 10%; top: 60%; width: clamp(180px, 18vw, 360px); }
 
 body:has(.modal.is-open) .tile-wrap {
   opacity: 0;
@@ -246,7 +253,7 @@ body:has(.modal.is-open) .tile-wrap {
 
 .modal-body p {
   margin: 0 0 18px 0;
-  font-size: 15px;
+  font-size: var(--body-size);
   line-height: 1.75;
   color: rgba(0, 0, 0, 0.62);
 }
@@ -257,7 +264,7 @@ body:has(.modal.is-open) .tile-wrap {
 
 .about-links {
   margin-top: 28px;
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 14px);
   letter-spacing: 0.12em;
   color: rgba(0, 0, 0, 0.55);
 
@@ -287,8 +294,8 @@ body:has(.modal.is-open) .tile-wrap {
   margin-left: auto;
   margin-right: var(--page-pad);
 
-  width: min(360px, 32vw);
-  max-width: 420px;
+  width: min(420px, 32vw);
+  max-width: 520px;
 
   opacity: 0;
   transform: translateY(-12px);
@@ -337,7 +344,7 @@ body:has(.modal.is-open) .tile-wrap {
 
 .project-body p {
   margin: 0 0 14px 0;
-  font-size: 15px;
+  font-size: var(--body-size);
   line-height: 1.75;
   color: rgba(0, 0, 0, 0.72);
 }
@@ -406,6 +413,33 @@ body:has(.modal.is-open) .tile-wrap {
 }
 
 /* =================================
+   LARGE MONITORS
+================================== */
+
+@media (min-width: 1600px) {
+  .canvas {
+    padding-top: clamp(32px, 2vw, 64px);
+    padding-bottom: clamp(72px, 4vw, 140px);
+    min-height: 92vh;
+  }
+
+  .tile-caption {
+    margin-top: clamp(12px, 1.2vw, 18px);
+  }
+}
+
+@media (min-width: 2000px) {
+  :root {
+    --header-size: clamp(48px, 5.8vw, 160px);
+  }
+
+  .tile-a { width: clamp(260px, 24vw, 620px); }
+  .tile-b { width: clamp(260px, 24vw, 620px); }
+  .tile-c { width: clamp(260px, 24vw, 620px); }
+  .tile-d { width: clamp(220px, 16vw, 420px); }
+}
+
+/* =================================
    MOBILE
 ================================== */
 
@@ -428,18 +462,6 @@ body:has(.modal.is-open) .tile-wrap {
 }
 
 @media (max-width: 700px) {
-  :root {
-    --page-pad: 18px;
-  }
-
-  .top-text p {
-    font-size: 40px;
-  }
-
-  .about-trigger {
-    font-size: 14px;
-  }
-
   .modal {
     padding-top: 135px;
   }
