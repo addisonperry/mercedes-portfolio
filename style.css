@@ -150,12 +150,16 @@ a {
 
 .tile-title {
   white-space: nowrap;
+  color: rgba(0, 0, 0, 0.45);
 }
 
 .tile-year {
   font-size: 11px;
   letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.45);
+  font-style: italic;
 }
+
 
 /* hover + focus behavior */
 @media (hover: hover) and (pointer: fine) {
