@@ -181,7 +181,6 @@ a {
 .tile-b { right: 6%; top: 12%; width: clamp(160px, 26vw, 340px); }
 .tile-c { left: 38%; top: 34%; width: clamp(160px, 26vw, 340px); }
 .tile-d { right: 10%; top: 60%; width: clamp(120px, 18vw, 220px); }
-.tile-e { left: 6%; top: 72%; width: clamp(180px, 26vw, 360px); }
 
 body:has(.modal.is-open) .tile-wrap {
   opacity: 0;
