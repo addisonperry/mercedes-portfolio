@@ -134,7 +134,7 @@ a {
 }
 
 .tile-caption {
-  margin-top: 8px;
+  margin-top: 12px;
 
   display: flex;
   justify-content: space-between;
@@ -155,7 +155,6 @@ a {
 .tile-year {
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: rgba(0, 0, 0, 0.45);
 }
 
 /* hover + focus behavior */
@@ -167,10 +166,6 @@ a {
   .tile-wrap:hover .tile-card,
   .tile-link:focus-visible + .tile-card {
     transform: scale(1.05);
-  }
-
-  .tile-wrap:hover .tile-caption {
-    color: var(--red);
   }
 }
 
