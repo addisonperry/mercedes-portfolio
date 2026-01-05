@@ -135,6 +135,12 @@ a {
 
 .tile-caption {
   margin-top: 8px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+
   font-size: 12px;
   line-height: 1.4;
   letter-spacing: 0.06em;
